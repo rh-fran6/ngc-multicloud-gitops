@@ -1,0 +1,14 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  labels:
+    operators.coreos.com/rhbk-operator.rhbk-sso: ""
+  name: rhbk-operator
+  namespace: rhbk-sso
+spec:
+  channel: PATCH_ME
+  installPlanApproval: Automatic
+  name: rhbk-operator
+  source: redhat-operators
+  sourceNamespace: openshift-marketplace
+  startingCSV: rhbk-operator.v22.0.6-opr.1

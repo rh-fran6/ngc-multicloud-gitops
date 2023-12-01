@@ -34,23 +34,6 @@ spec:
       hs.status = "Progressing"
       hs.message = "Waiting for PVC"
       return hs
-  
-  # Adding health check for ACS central sync wave
-  # platform.stackrox.io/Central:
-  # health.lua: |
-  #   hs = {}
-  #   if obj.status ~= nil and obj.status.conditions ~= nil then
-  #     for i, condition in ipairs(obj.status.conditions) do
-  #       if condition.status == "True" and (condition.reason == "InstallSuccessful" or condition.reason =="UpgradeSuccessful") then
-  #         hs.status = "Healthy"
-  #         hs.message = condition.message
-  #         return hs
-  #       end
-  #     end
-  #   end
-  #   hs.status = "Progressing"
-  #   hs.message = "Waiting for Central to deploy."
-  #   return hs
 
   applicationInstanceLabelKey: argocd.argoproj.io/instance
   # Not the greatest way to pass git/quay info to sub-applications, but it will do until
@@ -101,8 +84,6 @@ spec:
         cpu: 500m
         memory: 2Gi
   sso:
-    # provider: keycloak
-    ## Remove From here to sso.dex.resources.requests.memory to disable option for login using OpenShift Oauth
     provider: dex
     dex:
       openShiftOAuth: true

@@ -1,0 +1,25 @@
+apiVersion: k8s.keycloak.org/v2alpha1
+kind: Keycloak
+metadata:
+  name: rhbk-sso
+  namespace: rhbk-sso
+spec:
+  instances: 1
+  db:
+    vendor: postgres
+    host: postgres-db.postgresql.svc.cluster.local
+    usernameSecret:
+      name: postgres-db-secret
+      key: username
+    passwordSecret:
+      name: postgres-db-secret
+      key: password
+  http:
+    tlsSecret: keycloak-cert
+  hostname:
+    hostname: keycloak.apps.dd-aro.eastus.aroapp.io
+
+# CERTSECRET=keycloak-cert
+# for i in $(oc get secret  -n openshift-ingress | grep ingress | awk '{print $1}'); oc extract secret/$i -n openshift-ingress
+# oc create secret tls $CERTSECRET --cert tls.crt --key tls.key -n rhbk-sso
+# rm -rf tls.*

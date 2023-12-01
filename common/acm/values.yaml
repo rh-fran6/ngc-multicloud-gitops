@@ -1,6 +1,6 @@
 main:
   gitops:
-    channel: "stable"
+    channel: "gitops-1.8"
 
 global:
   extraValueFiles: []
@@ -30,6 +30,8 @@ clusterGroup:
 #      - name: clusterGroup
 #        value: region-one
 
+
+## Required for Provisioning ONLY
 secretStore:
   name: vault-backend
   kind: ClusterSecretStore

@@ -12,3 +12,5 @@ spec:
     name: config-demo
     weight: 100
   wildcardPolicy: None
+  tls:
+    insecureEdgeTerminationPolicy: Redirect

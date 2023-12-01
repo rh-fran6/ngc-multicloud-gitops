@@ -9,35 +9,37 @@ clusterGroup:
   isHubCluster: false
 
   namespaces:
-    - config-demo
     - hello-world
-    - golang-external-secrets
+    - external-secrets-operator
+    - postgresql
 
   subscriptions:
 
   projects:
     - eso
-    - config-demo
     - hello-world
+    - postgresql
 
   applications:
-    golang-external-secrets:
-      name: golang-external-secrets
-      namespace: golang-external-secrets
+    
+    external-secrets-operator:
+      name: external-secrets-operator
+      namespace: external-secrets-operator
       project: eso
-      path: common/golang-external-secrets
-
-    config-demo:
-      name: config-demo
-      namespace: config-demo
-      project: config-demo
-      path: charts/all/config-demo
+      path: common/external-secrets-operator
 
     hello-world:
       name: hello-world
       namespace: hello-world
       project: hello-world
       path: charts/all/hello-world
+
+    postgresql:
+      name: postgresql
+      namespace: postgresql
+      project: postgresql
+      path: charts/all/postgresql
+      
 
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm

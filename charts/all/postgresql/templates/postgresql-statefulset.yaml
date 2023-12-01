@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgresql-db-1
+  namespace: postgresql
+spec:
+  serviceName: postgresql-db-service
+  selector:
+    matchLabels:
+      app: postgresql-db
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: postgresql-db
+    spec:
+      containers:
+        - name: postgresql-db
+          image: postgres:latest
+          volumeMounts:
+            - mountPath: /data
+              name: cache-volume
+          env:
+            - name: POSTGRES_USER
+              value: postgresql
+            - name: POSTGRES_PASSWORD
+              value: postgresql
+            - name: PGDATA
+              value: /data/pgdata
+            - name: POSTGRES_DB
+              value: keycloak
+      volumes:
+        - name: cache-volume
+          emptyDir: {}
