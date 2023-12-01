@@ -1,0 +1,73 @@
+# This pushes out the HUB's Certificate Authorities on to the imported clusters
+# {{ if .Values.clusterGroup.isHubCluster }}
+# ---
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: acm-vault-internal-cert-policy
+  namespace: vault
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+spec:
+  remediationAction: enforce
+  disabled: false
+  policy-templates:
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name: acm-hub-vault-internal-config-policy
+        spec:
+          remediationAction: musthave
+          severity: medium
+          namespaceSelector:
+            include:
+              - vault
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                kind: Secret
+                apiVersion: v1
+                type: Opaque
+                metadata:
+                  name: vault-secret-internal
+                  namespace: postgresql
+                data:
+                  vault-secret-internal: '{{ `{{hub fromSecret "" "vault-secret-internal" "tls.crt" hub}}` }}'
+--- 
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: acm-hub-postgresql-policy-placement-binding
+  namespace: vault
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+placementRef:
+  name: acm-hub-postgresql-policy-placement
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+  - name: acm-vault-internal-cert-policy
+    kind: Policy
+    apiGroup: policy.open-cluster-management.io
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: acm-hub-postgresql-policy-placement
+  namespace: vault
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  clusterConditions:
+    - status: 'True'
+      type: ManagedClusterConditionAvailable
+  clusterSelector:
+    matchExpressions:
+      - key: local-cluster
+        operator: In
+        values:
+          - 'true'
+# {{ end }}
+
