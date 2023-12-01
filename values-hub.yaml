@@ -4,8 +4,6 @@ clusterGroup:
 
   namespaces:
     - open-cluster-management
-    - vault
-    - config-demo
     - hello-world
     - external-secrets-operator
     - ansible-automation-platform
@@ -20,7 +18,6 @@ clusterGroup:
       
   projects:
     - hub
-    - config-demo
     - hello-world
     - postgresql
 
@@ -57,12 +54,6 @@ clusterGroup:
         kind: ManagedClusterInfo
         jsonPointers:
           - /spec/loggingCA
-
-    vault:
-      name: vault
-      namespace: vault
-      project: hub
-      path: common/hashicorp-vault
       
     aap-instance:
       name: ansible-automation-platform
@@ -84,11 +75,6 @@ clusterGroup:
       project: hub
       path: common/external-secrets-operator
 
-    config-demo:
-      name: config-demo
-      namespace: config-demo
-      project: config-demo
-      path: charts/all/config-demo
 
     hello-world:
       name: hello-world
