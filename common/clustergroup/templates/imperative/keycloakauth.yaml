@@ -1,0 +1,36 @@
+# Alternatively, store secret in KV and read using the secrets operator
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: argocd-secret
+# data:
+#   ## Update with keycloak client secret(base64 encoded)  ...
+#   ...
+#   oidc.keycloak.clientSecret: <secret from keycloak>   
+# ---
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: argocd-cm
+# data:
+#   ## Argo CD url
+#   url: https://argocd.example.com 
+#   oidc.config: |
+#     name: Keycloak
+#     ## Keycloak URL
+#     issuer: https://keycloak.example.com/realms/master 
+#     ## Client ID created on keyclok
+#     clientID: argocd  
+#     ## Client secret created on Keycloak
+#     clientSecret: $oidc.keycloak.clientSecret  
+#     requestedScopes: ["openid", "profile", "email", "groups"]
+# ---
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: argocd-rbac-cm
+# data:
+#   policy.csv: |
+#     g, ArgoCDAdmins, role:admin
+#     g, ArgoCDReaders, role:readonly
+# #   admin.enabled: "false"
