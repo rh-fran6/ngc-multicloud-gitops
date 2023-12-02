@@ -29,7 +29,7 @@ spec:
               objectDefinition:
                 kind: Secret
                 apiVersion: v1
-                type: Opaque
+                type: kubernetes.io/tls
                 metadata:
                   name: keycloak-cert
                   namespace: rhbk-sso
