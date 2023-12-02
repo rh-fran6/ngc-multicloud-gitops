@@ -4,7 +4,7 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
-  name: acm-keycloak-ingress-cert
+  name: acm-keycloak-ingress-certificate
   namespace: openshift-ingress
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
