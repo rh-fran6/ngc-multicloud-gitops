@@ -81,8 +81,8 @@ clusterGroup:
 #    path: applications/acm
 
 secretStore:
-  name: vault-backend
-  kind: ClusterSecretStore
+  # name: vault-backend
+  # kind: ClusterSecretStore
 
 # Depends on the value of 'vault_hub' ansible variable used 
 # during the installation
