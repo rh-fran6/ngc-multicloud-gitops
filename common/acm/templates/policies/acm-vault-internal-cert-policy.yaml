@@ -1,3 +1,6 @@
+# This pushes out the HUB's Certificate Authorities on to the imported clusters
+{{ if .Values.clusterGroup.isHubCluster }}
+---
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
@@ -67,4 +70,5 @@ spec:
         operator: In
         values:
           - 'true'
+{{ end }}
 
