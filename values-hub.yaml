@@ -9,7 +9,7 @@ clusterGroup:
     - ansible-automation-platform
     - postgresql ## Postgres for keycloak
     - rhbk-sso   ## Keycloak operator
-    - stackrox        
+    # - stackrox        
 
   subscriptions:
     acm:
