@@ -10,7 +10,6 @@ clusterGroup:
     - postgresql ## Postgres for keycloak
     - rhbk-sso   ## Keycloak operator
     - stackrox        
-    - rhacs-operator
 
   subscriptions:
     acm:
@@ -66,7 +65,7 @@ clusterGroup:
 
     rhacs:
       name: rhacs-operator
-      namespace: rhacs
+      namespace: openshift-operators
       project: hub
       kustomize: true
       path: common/advanced-cluster-security-operator/aggregate/default
