@@ -11,6 +11,7 @@ clusterGroup:
     - rhbk-sso   ## Keycloak operator
     - rhacs  ## ACS
     - stackrox        ## Stackrox for ACS
+    - rhacs-operator
 
   subscriptions:
     acm:
