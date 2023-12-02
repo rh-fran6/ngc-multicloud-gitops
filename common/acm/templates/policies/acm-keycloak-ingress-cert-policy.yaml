@@ -17,7 +17,7 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
         metadata:
-          name: acm-keycloak-ingress-certificate
+          name: acm-keycloak-ingress-cert
         spec:
           remediationAction: musthave
           severity: medium
@@ -29,7 +29,7 @@ spec:
               objectDefinition:
                 kind: Secret
                 apiVersion: v1
-                type: kubernetes.io/tls
+                # type: kubernetes.io/tls
                 metadata:
                   name: keycloak-cert
                   namespace: rhbk-sso
