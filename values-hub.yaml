@@ -17,10 +17,10 @@ clusterGroup:
       namespace: open-cluster-management
       channel: release-2.8
 
-    rhacs:
-       name: rhacs-operator
-       namespace: openshift-operators
-       channel: stable
+    # rhacs:
+    #    name: rhacs-operator
+    #    namespace: openshift-operators
+    #    channel: stable
       
   projects:
     - hub
