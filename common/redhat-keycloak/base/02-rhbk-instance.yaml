@@ -15,7 +15,7 @@ spec:
       name: postgres-db-secret
       key: password
   http:
-    tlsSecret: keycloak-cert
+    tlsSecret: keycloak-tls-cert  ## Must not be wildcard cert of openshift ingress. 
   hostname:
     hostname: keycloak.apps.dd-aro.eastus.aroapp.io
 

@@ -5,3 +5,4 @@ resources:
   - 01-rhbk-subscription.yaml
   - 02-rhbk-instance.yaml
   - 03-rhbk-secret.yaml
+  - 04-rhbk-certificate-secret.yaml
