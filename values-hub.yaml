@@ -8,7 +8,7 @@ clusterGroup:
     - external-secrets-operator
     - ansible-automation-platform
     - postgresql
-    # - rhbk-sso
+    - rhbk-sso
 
   subscriptions:
     acm:
@@ -62,12 +62,12 @@ clusterGroup:
       kustomize: true
       path: common/ansible-automation-platform/overlays/default
 
-    # rhbk:
-    #   name: rhbk-sso
-    #   namespace: rhbk-sso
-    #   project: hub
-    #   kustomize: true
-    #   path: common/redhat-keycloak/overlays/stable-v22
+    rhbk:
+      name: rhbk-sso
+      namespace: rhbk-sso
+      project: hub
+      kustomize: true
+      path: common/redhat-keycloak/overlays/stable-v22
     
     external-secrets-operator:
       name: external-secrets-operator
