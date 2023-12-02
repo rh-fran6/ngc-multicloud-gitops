@@ -9,7 +9,7 @@ clusterGroup:
     - ansible-automation-platform
     - postgresql ## Postgres for keycloak
     - rhbk-sso   ## Keycloak operator
-    - rhacs-operator  ## ACS
+    - rhacs  ## ACS
     - stackrox        ## Stackrox for ACS
 
   subscriptions:
@@ -66,7 +66,7 @@ clusterGroup:
 
     rhacs:
       name: rhacs-operator
-      namespace: rhacs-operator
+      namespace: rhacs
       project: hub
       kustomize: true
       path: common/advanced-cluster-security-operator/aggregate/default
