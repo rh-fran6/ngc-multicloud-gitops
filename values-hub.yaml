@@ -9,7 +9,7 @@ clusterGroup:
     - ansible-automation-platform
     - postgresql ## Postgres for keycloak
     - rhbk-sso   ## Keycloak operator
-    - rhacs-operator        
+    # - rhacs-operator        
 
   subscriptions:
     acm:
@@ -17,10 +17,10 @@ clusterGroup:
       namespace: open-cluster-management
       channel: release-2.8
 
-    rhacs:
-       name: rhacs-operator
-       namespace: rhacs-operator
-       channel: stable
+    # rhacs:
+    #    name: rhacs-operator
+    #    namespace: rhacs-operator
+    #    channel: stable
       
   projects:
     - hub
