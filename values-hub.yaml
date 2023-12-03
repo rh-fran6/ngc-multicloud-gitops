@@ -27,27 +27,8 @@ clusterGroup:
     - hello-world
     - postgresql
 
-  # Explicitly mention the cluster-state based overrides we plan to use for this pattern.
-  # We can use self-referential variables because the chart calls the tpl function with these variables defined
   sharedValueFiles:
     - '/overrides/values-{{ $.Values.global.clusterPlatform }}.yaml'
-
-  # sharedValueFiles is a flexible mechanism that will add the listed valuefiles to every app defined in the
-  # applications section. We intend this to supplement and possibly even replace previous "magic" mechanisms, though
-  # we do not at present have a target date for removal.
-  #
-  # To replicate the "classic" magic include structure, the clusterGroup would need all of these
-  # sharedValueFiles, in this order:
-  #   - '/overrides/values-{{ $.Values.global.clusterPlatform }}.yaml'
-  #   - '/overrides/values-{{ $.Values.global.clusterPlatform }}-{{ $.Values.global.clusterVersion }}.yaml'
-  #   - '/overrides/values-{{ $.Values.global.clusterPlatform }}-{{ $.Values.clusterGroup.name }}.yaml'
-  #   - '/overrides/values-{{ $.Values.global.clusterVersion }}-{{ $.Values.clusterGroup.name }}.yaml"
-  #   - '/overrides/values-{{ $.Values.global.localClusterName }}.yaml'
-
-  # This kind of variable substitution will work with any of the variables the Validated Patterns operator knows
-  # about and sets, so this is also possible, for example:
-  #   - '/overrides/values-{{ $.Values.global.hubClusterDomain }}.yaml'
-  #   - '/overrides/values-{{ $.Values.global.localClusterDomain }}.yaml'
 
   applications:
     acm:
@@ -88,7 +69,6 @@ clusterGroup:
       project: hub
       path: common/external-secrets-operator
 
-
     hello-world:
       name: hello-world
       namespace: hello-world
@@ -102,12 +82,6 @@ clusterGroup:
       path: charts/all/postgresql
 
   imperative:
-    # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
-    # The default schedule is every 10 minutes: imperative.schedule
-    # Total timeout of all jobs is 1h: imperative.activeDeadlineSeconds
-    # imagePullPolicy is set to always: imperative.imagePullPolicy
-    # For additional overrides that apply to the jobs, please refer to
-    # https://hybrid-cloud-patterns.io/imperative-actions/#additional-job-customizations
     jobs:
     - name: hello-world
       # ansible playbook to be run

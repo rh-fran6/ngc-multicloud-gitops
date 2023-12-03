@@ -32,7 +32,7 @@ data:
             <h1 style="color: black;">CSA Validated Patterns Demo</h1>
             <h4 style="color: black;">Hub Cluster Domain : '{{ .Values.global.hubClusterDomain }}'</h4>
             <div class="thinking-gif">
-                <iframe src="https://giphy.com/embed/YLsNriHj84dupx9XvQ"> width="480" height="405" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="#">@CSA DEMO</a></p>
+                <iframe src="https://giphy.com/embed/YLsNriHj84dupx9XvQ"> width="480" height="405" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="#">@csa demo</a></p>
             </div>
         </div>
     </body>
