@@ -8,7 +8,7 @@ clusterGroup:
     - external-secrets-operator
     - ansible-automation-platform
     - postgresql ## Postgres for keycloak
-    # - rhbk-sso   ## Keycloak operator -- forms operator group
+    - rhbk-sso   ## Keycloak operator -- forms operator group
     - stackrox      
     - rhacs-operator 
 
