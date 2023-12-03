@@ -5,3 +5,19 @@ kind: Kustomization
 resources:
   - ../../base
 
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/template/spec/containers[0]/resources/limits/cpu
+        value: 4  ## Default is 8
+    target:
+      kind: Deployment
+      name: central-db
+
+  - patch: |-
+      - op: replace
+        path: /spec/template/spec/containers[0]/resources/limits/memory
+        value: 16  ## Default is 16Gi
+    target:
+      kind: Deployment
+      name: central-db

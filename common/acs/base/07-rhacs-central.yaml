@@ -11,11 +11,6 @@ spec:
         persistentVolumeClaim:
           claimName: central-db
           size: 100Gi
-    ## Overriding default Central DB resources
-    # resources:
-    #   limits:
-    #     memory: "8Gi"
-    #     cpu: "200m"
     exposure:
       loadBalancer:
         enabled: false
