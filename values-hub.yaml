@@ -10,7 +10,7 @@ clusterGroup:
     - postgresql ## Postgres for keycloak
     - rhbk-sso   ## Keycloak operator -- forms operator group
     - stackrox      
-    - rhacs-operator 
+    # - rhacs-operator 
 
   subscriptions:
     acm:
