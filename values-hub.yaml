@@ -75,12 +75,12 @@ clusterGroup:
       kustomize: true
       path: common/acs/overlays/default
 
-    rhbk:
-      name: rhbk-sso
-      namespace: rhbk-sso
-      project: hub
-      kustomize: true
-      path: common/redhat-keycloak/overlays/stable-v22
+    # rhbk:
+    #   name: rhbk-sso
+    #   namespace: rhbk-sso
+    #   project: hub
+    #   kustomize: true
+    #   path: common/redhat-keycloak/overlays/stable-v22
     
     external-secrets-operator:
       name: external-secrets-operator
