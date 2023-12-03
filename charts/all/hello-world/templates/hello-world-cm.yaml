@@ -12,7 +12,7 @@ data:
         <title>Validate Pattern Demo</title>
         <style>
             body {
-                background-color: #DB3410;
+                background-color: #F8F2F1;
                 text-align: center;
                 margin: 0;
                 padding: 0;
