@@ -3,12 +3,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  # - 00-rhacs-namespace-operator.yaml
-  # - 01-rhacs-namespace-stackrox.yaml
-  - 02-rhacs-serviceaccounts.yaml
-  - 03-rhacs-rbac.yaml
-  - 04-rhacs-job.yaml
-  # - 05-rhacs-operatorgroup.yaml
-  # - 06-rhacs-subscription.yaml
-  - 07-rhacs-central.yaml
-  - 08-rhacs-securedcluster.yaml
+  - 01-rhacs-serviceaccounts.yaml
+  - 02-rhacs-rbac.yaml
+  - 03-rhacs-job.yaml
+  - 04-rhacs-central.yaml
+  - 05-rhacs-securedcluster.yaml
