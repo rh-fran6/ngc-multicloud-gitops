@@ -7,7 +7,7 @@ resources:
   # - 01-rhacs-namespace-stackrox.yaml
   # - 02-rhacs-serviceaccounts.yaml
   # - 03-rhacs-rbac.yaml
-  # - 04-rhacs-job.yaml
+  - 04-rhacs-job.yaml
   # - 05-rhacs-operatorgroup.yaml
   # - 06-rhacs-subscription.yaml
   - 07-rhacs-central.yaml
