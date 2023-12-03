@@ -5,8 +5,8 @@ kind: Kustomization
 resources:
   # - 00-rhacs-namespace-operator.yaml
   # - 01-rhacs-namespace-stackrox.yaml
-  # - 02-rhacs-serviceaccounts.yaml
-  # - 03-rhacs-rbac.yaml
+  - 02-rhacs-serviceaccounts.yaml
+  - 03-rhacs-rbac.yaml
   - 04-rhacs-job.yaml
   # - 05-rhacs-operatorgroup.yaml
   # - 06-rhacs-subscription.yaml
