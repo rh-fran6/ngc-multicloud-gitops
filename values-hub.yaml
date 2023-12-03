@@ -74,7 +74,6 @@ clusterGroup:
       namespace: rhacs-operator
       project: hub
       kustomize: true
-      # path: common/advanced-cluster-security-operator/aggregate/default
       path: common/acs/overlays/default
 
     rhbk:
