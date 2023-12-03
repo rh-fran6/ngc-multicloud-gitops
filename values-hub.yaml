@@ -8,7 +8,7 @@ clusterGroup:
     - external-secrets-operator
     - ansible-automation-platform
     - postgresql ## Postgres for keycloak
-    - rhbk-sso   ## Keycloak operator -- forms operator group
+    # - rhbk-sso   ## Keycloak operator -- forms operator group
     - stackrox      
     - rhacs-operator 
 
@@ -21,6 +21,11 @@ clusterGroup:
     rhacs:
        name: rhacs-operator
        channel: stable
+
+    rhbk:
+       name: rhbk-operator
+       namespace: rhbk-sso
+       channel: stable-v22
       
   projects:
     - hub
@@ -56,12 +61,12 @@ clusterGroup:
       kustomize: true
       path: common/acs/overlays/default
 
-    rhbk:
-      name: rhbk-sso
-      namespace: rhbk-sso
-      project: hub
-      kustomize: true
-      path: common/redhat-keycloak/overlays/stable-v22
+    # rhbk:
+    #   name: rhbk-sso
+    #   namespace: rhbk-sso
+    #   project: hub
+    #   kustomize: true
+    #   path: common/redhat-keycloak/overlays/stable-v22
     
     external-secrets-operator:
       name: external-secrets-operator
