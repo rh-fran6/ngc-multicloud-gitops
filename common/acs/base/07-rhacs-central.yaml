@@ -10,6 +10,8 @@ spec:
       persistence:
         persistentVolumeClaim:
           claimName: central-db
+          size: 100Gi
+          storageClassName: managed-csi
     exposure:
       loadBalancer:
         enabled: false
