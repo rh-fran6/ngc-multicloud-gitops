@@ -69,13 +69,13 @@ clusterGroup:
       kustomize: true
       path: common/ansible-automation-platform/overlays/default
 
-    # rhacs:
-    #   name: rhacs-operator
-    #   namespace: rhacs-operator
-    #   project: hub
-    #   kustomize: true
-    #   # path: common/advanced-cluster-security-operator/aggregate/default
-    #   path: common/acs/overlays/default
+    rhacs:
+      name: rhacs-operator
+      namespace: rhacs-operator
+      project: hub
+      kustomize: true
+      # path: common/advanced-cluster-security-operator/aggregate/default
+      path: common/acs/overlays/default
 
     rhbk:
       name: rhbk-sso
