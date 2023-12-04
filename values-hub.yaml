@@ -11,9 +11,6 @@ clusterGroup:
     - rhbk-sso   ## Keycloak operator -- forms operator group
     - stackrox      
     - rhacs-operator 
-    - openshift-operators-redhat
-    - openshift-distributed-tracing
-    - openshift-operators
 
   subscriptions:
     acm:
