@@ -11,6 +11,9 @@ clusterGroup:
     - rhbk-sso   ## Keycloak operator -- forms operator group
     - stackrox      
     - rhacs-operator 
+    - openshift-operators-redhat
+    - openshift-distributed-tracing
+    - openshift-operators
 
   subscriptions:
     acm:
@@ -26,6 +29,22 @@ clusterGroup:
        name: rhbk-operator
        namespace: rhbk-sso
        channel: stable-v22
+
+    ossm-elasticsearch:
+       name: elasticseach-operator
+       channel: stable
+    
+    ossm-jaeger:
+       name: jaeger-operator
+       channel: stable
+    
+    ossm-kiali:
+       name: kiali-operator
+       channel: stable
+    
+    ossm:
+       name: servicemesh-operator
+       channel: stable
       
   projects:
     - hub
@@ -60,6 +79,34 @@ clusterGroup:
       project: hub
       kustomize: true
       path: common/acs/overlays/default
+
+    # ossm-elasticsearch:
+    #   name: elasticseach-operator
+    #   namespace: openshift-operators-redhat
+    #   project: hub
+    #   kustomize: true
+    #   # path: common/acs/overlays/default
+
+    # ossm-jaeger:
+    #   name: jaeger-operator
+    #   namespace: openshift-distributed-tracing
+    #   project: hub
+    #   kustomize: true
+    #   # path: common/acs/overlays/default
+
+    # ossm-kiali:
+    #   name: kiali-operator
+    #   namespace: openshift-operators
+    #   project: hub
+    #   kustomize: true
+    #   # path: common/acs/overlays/default
+
+    ossm:
+      name: ossm-operator
+      namespace: -operator
+      project: hub
+      kustomize: true
+      path: common/ossm/overlays/default
 
     rhbk:
       name: rhbk-sso
