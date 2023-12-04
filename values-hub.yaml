@@ -30,21 +30,21 @@ clusterGroup:
        namespace: rhbk-sso
        channel: stable-v22
 
-    ossm-elasticsearch:
-       name: elasticseach-operator
-       channel: stable
+    # ossm-elasticsearch:
+    #    name: elasticseach-operator
+    #    channel: stable
     
-    ossm-jaeger:
-       name: jaeger-operator
-       channel: stable
+    # ossm-jaeger:
+    #    name: jaeger-operator
+    #    channel: stable
     
-    ossm-kiali:
-       name: kiali-operator
-       channel: stable
+    # ossm-kiali:
+    #    name: kiali-operator
+    #    channel: stable
     
-    ossm:
-       name: servicemesh-operator
-       channel: stable
+    # ossm:
+    #    name: servicemesh-operator
+    #    channel: stable
       
   projects:
     - hub
@@ -101,12 +101,12 @@ clusterGroup:
     #   kustomize: true
     #   # path: common/acs/overlays/default
 
-    ossm:
-      name: ossm-operator
-      namespace: openshift-operator
-      project: hub
-      kustomize: true
-      path: common/ossm/overlays/default
+    # ossm:
+    #   name: ossm-operator
+    #   namespace: openshift-operator
+    #   project: hub
+    #   kustomize: true
+    #   path: common/ossm/overlays/default
 
     rhbk:
       name: rhbk-sso
