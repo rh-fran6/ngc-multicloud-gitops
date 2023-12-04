@@ -10,9 +10,9 @@ data:
     <html>
     <head>
         <title>Validate Pattern Demo</title>
-        <style>
+        <style>        
             body {
-                background-color: #F8F2F1;
+                background-color: #F00D1E;
                 text-align: center;
                 margin: 0;
                 padding: 0;
@@ -31,8 +31,8 @@ data:
         <div class="main-content">
             <h1 style="color: black;">CSA Validated Patterns Demo</h1>
             <h4 style="color: black;">Hub Cluster Domain : '{{ .Values.global.hubClusterDomain }}'</h4>
-            <div class="thinking-gif">
-                <iframe src="https://giphy.com/embed/YLsNriHj84dupx9XvQ"> width="480" height="405" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="#">@csa demo</a></p>
+            <div class="thinking-gif" style="border: dimgray;">
+                <iframe src="https://giphy.com/embed/3o6Zt2jqdgXLgkRj7G" width="480" height="365" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="#">@CSA Demo</a></p>
             </div>
         </div>
     </body>
