@@ -103,7 +103,7 @@ clusterGroup:
 
     ossm:
       name: ossm-operator
-      namespace: -operator
+      namespace: openshift-operator
       project: hub
       kustomize: true
       path: common/ossm/overlays/default
