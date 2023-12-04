@@ -34,8 +34,8 @@ spec:
                   name: keycloak-cert
                   namespace: rhbk-sso
                 data:
-                  tls.crt: '{{ `{{hub fromSecret "" "d9fc9fbf-6831-499e-8cad-dd5ce46ee63b-ingress" "tls.crt" hub}}` }}'
-                  tls.key: '{{ `{{hub fromSecret "" "d9fc9fbf-6831-499e-8cad-dd5ce46ee63b-ingress" "tls.key" hub}}` }}'
+                  tls.crt: '{{ `{{hub fromSecret "" "1c736b15-173e-44fb-b22c-01fa6005a471-ingress" "tls.crt" hub}}` }}'
+                  tls.key: '{{ `{{hub fromSecret "" "1c736b15-173e-44fb-b22c-01fa6005a471-ingress" "tls.key" hub}}` }}'
 --- 
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
