@@ -6,7 +6,7 @@ metadata:
 spec:
   instances: 1
   ingress:
-      className: openshift-default
+      enabled: false
   db:
     vendor: postgres
     host: postgres-db.postgresql.svc.cluster.local
