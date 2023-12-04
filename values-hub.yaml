@@ -77,33 +77,33 @@ clusterGroup:
       kustomize: true
       path: common/acs/overlays/default
 
-    # ossm-elasticsearch:
-    #   name: elasticseach-operator
-    #   namespace: openshift-operators-redhat
-    #   project: hub
-    #   kustomize: true
-    #   # path: common/acs/overlays/default
+    ossm-elasticsearch:
+      name: elasticseach-operator
+      namespace: openshift-operators-redhat
+      project: hub
+      kustomize: true
+      path: common/elasticsearch/overlays/stable
 
-    # ossm-jaeger:
-    #   name: jaeger-operator
-    #   namespace: openshift-distributed-tracing
-    #   project: hub
-    #   kustomize: true
-    #   # path: common/acs/overlays/default
+    ossm-jaeger:
+      name: jaeger-operator
+      namespace: openshift-distributed-tracing
+      project: hub
+      kustomize: true
+      path: common/jaeger/overlays/stable
 
-    # ossm-kiali:
-    #   name: kiali-operator
-    #   namespace: openshift-operators
-    #   project: hub
-    #   kustomize: true
-    #   # path: common/acs/overlays/default
+    ossm-kiali:
+      name: kiali-operator
+      namespace: openshift-operators
+      project: hub
+      kustomize: true
+      path: common/kiali/overlays/stable
 
-    # ossm:
-    #   name: ossm-operator
-    #   namespace: openshift-operator
-    #   project: hub
-    #   kustomize: true
-    #   path: common/ossm/overlays/default
+    ossm:
+      name: ossm-operator
+      namespace: istio-system
+      project: hub
+      kustomize: true
+      path: common/openshift-servicemesh/overlays/default
 
     rhbk:
       name: rhbk-sso
