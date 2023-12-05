@@ -8,9 +8,13 @@ clusterGroup:
     - external-secrets-operator
     - ansible-automation-platform
     - postgresql ## Postgres for keycloak
-    - rhbk-sso   ## Keycloak operator -- forms operator group
+    # - rhbk-sso   ## Keycloak operator -- forms operator group
     - stackrox      
     - rhacs-operator 
+    - openshift-operators-redhat
+    - openshift-distributed-tracing
+    - costmanagement-metrics-operator
+    - cert-manager-operator
 
   subscriptions:
     acm:
@@ -24,8 +28,31 @@ clusterGroup:
 
     rhbk:
        name: rhbk-operator
-       namespace: rhbk-sso
        channel: stable-v22
+    
+    elasticsearch:
+       name: elasticsearch-operator
+       channel: stable
+    
+    jaeger:
+       name: jaeger-product
+       channel: stable
+
+    kiali:
+       name: kiali-ossm
+       channel: stable
+
+    ossm:
+       name: servicemeshoperator
+       channel: stable
+    
+    cost:
+       name: costmanagement-metrics-operator
+       channel: stable
+
+    certmanager:
+       name: openshift-cert-manager-operator
+       channel: stable-v1
       
   projects:
     - hub
@@ -62,8 +89,8 @@ clusterGroup:
       path: common/acs/overlays/default
 
     rhbk:
-      name: rhbk-sso
-      namespace: rhbk-sso
+      name: rhbk-operator
+      namespace: rhbk-operator
       project: hub
       kustomize: true
       path: common/redhat-keycloak/overlays/stable-v22
@@ -79,6 +106,12 @@ clusterGroup:
       namespace: hello-world
       project: hello-world
       path: charts/all/hello-world
+
+    ossm:
+      name: servicemeshoperator
+      namespace: istio-system
+      project: hub
+      path: common/ossm/overlays/default
 
     postgresql:
       name: postgresql

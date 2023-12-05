@@ -28,3 +28,11 @@ patches:
        kind: AutomationController
        name: controller
        namespace: ansible-automation-platform
+  
+  - patch: |-
+      - op: replace
+        path: /spec/tls/termination
+        value: reencrypt
+    target:
+      kind: Route
+      name: ngc-aap-controller

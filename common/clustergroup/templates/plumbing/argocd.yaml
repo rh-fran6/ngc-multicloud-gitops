@@ -113,7 +113,7 @@ spec:
       - PipelineRun
   server:
     autoscale:
-      enabled: false
+      enabled: true
     grpc:
       ingress:
         enabled: false
@@ -149,4 +149,35 @@ spec:
   href: 'https://{{ .Values.clusterGroup.name }}-gitops-server-{{ $namespace }}.{{ coalesce .Values.global.localClusterDomain .Values.global.hubClusterDomain }}'
   location: ApplicationMenu
   text: '{{ title .Values.clusterGroup.name }} ArgoCD'
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-tls-certs-cm
+  namespace: {{ $namespace }}
+data:
+  gitlab.oidc.thecloudgarage.com: |
+    -----BEGIN CERTIFICATE-----
+    MIIDxzCCAq+gAwIBAgIUDM2TMcxQPCt4etk1b6XrmrE8PbMwDQYJKoZIhvcNAQEL
+    BQAwdTELMAkGA1UEBhMCSU4xCzAJBgNVBAgMAk1IMQ8wDQYDVQQHDAZNdW1iYWkx
+    DjAMBgNVBAoMBXN0YWNrMQ8wDQYDVQQLDAZkZXZvcHMxJzAlBgNVBAMMHmdpdGxh
+    Yi5vaWRjLnRoZWNsb3VkZ2FyYWdlLmNvbTAeFw0yMjA4MjIxNDA4MjRaFw0yNDA4
+    MjExNDA4MjRaMHUxCzAJBgNVBAYTAklOMQswCQYDVQQIDAJNSDEPMA0GA1UEBwwG
+    TXVtYmFpMQ4wDAYDVQQKDAVzdGFjazEPMA0GA1UECwwGZGV2b3BzMScwJQYDVQQD
+    DB5naXRsYWIub2lkYy50aGVjbG91ZGdhcmFnZS5jb20wggEiMA0GCSqGSIb3DQEB
+    AQUAA4IBDwAwggEKAoIBAQDIHkS12bpLX7lE0Y1NHZnLqV3v2J0E2bvAqxsRdUK0
+    /duqytS4eUwGRdWbtAcAVe6uU0gehFMHhyw7/XccixG5x9rVoWn47bKkH4EDppxK
+    U0YHdpBur0mCNm0NbQSjMYRk7emkX/b6OMDSL96FGWEfhYq8FZwL3YVdKBJReLFa
+    Y8q9cY/zhKvjwFtfWEPqe4173tyOiwqAjU7RF9Yj8NaBFJnUiJCmb0fQZ0XXsNcU
+    UnPr4z4OvIDXQ9CcWXJXdc0cQJQhfkOGlhAKlVBhLR+Hx5pC8gsntWCN2UUkzd8M
+    xE4NsXN9+pQnLNaJmUtqyJySfGYLDbmhqQ6HGIoT/b+zAgMBAAGjTzBNMAsGA1Ud
+    DwQEAwIFoDATBgNVHSUEDDAKBggrBgEFBQcDATApBgNVHREEIjAggh5naXRsYWIu
+    b2lkYy50aGVjbG91ZGdhcmFnZS5jb20wDQYJKoZIhvcNAQELBQADggEBAMWUqIFr
+    UPHRlBzbHtDTnO0YlBe2UIfpnKcAxYuTeczB83kFGCa421SOV1lNsMJJT9OjrDfi
+    90QJXYClxCF/StcBOosTnSKbg7gli4QYGzVfXkGG6y4k8eHR3RvhfFXcgnXR8WGD
+    3fIBY7+kp1PZzBvwKlwzquS7XwR+0h9RA/8nzS06I6PzJ2jvKgnDGFzd3D9QfFJc
+    OKUtWEVjR2tVkKoAxv/PLy4QZsTuOskJ0VmBxGVS5mptCYRpfBlF113vrln2DML7
+    mSwKxUb55uFDoZY70W18nT+FA3ivTq2tNw5VAm/ANjmT3nwv4chTmMztA2X2zLQw
+    xxojcn1cssi6GTc=
+    -----END CERTIFICATE-----
 {{- end }}

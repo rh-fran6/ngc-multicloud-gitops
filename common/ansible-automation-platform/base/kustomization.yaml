@@ -6,3 +6,5 @@ resources:
   - 00-base-operator-install.yaml
   - 01-automation-controller.yaml
   - 02-console-link.yaml
+  - 03-automationhub.yaml
+  - 04-automationhub-consolelink.yaml
