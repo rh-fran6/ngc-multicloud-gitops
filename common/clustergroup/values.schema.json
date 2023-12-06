@@ -521,6 +521,9 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "unseal": {
+          "type": "boolean"
+        },
         "jobs": {
           "type": "array",
           "items": {
