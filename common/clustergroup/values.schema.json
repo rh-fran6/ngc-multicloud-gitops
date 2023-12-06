@@ -235,9 +235,9 @@
           "description": "If set to true the values is used to identify whether this is the hub cluster or an edge/spoke cluster configuration."
         },
         "sharedValueFiles": {
-            "type": "array",
-            "description": "Templated value file paths."
-	},
+          "type": "array",
+          "description": "Templated value file paths."
+        },
         "namespaces": {
           "type": "array",
           "description": "This is the array of namespaces that the VP framework will create.  In addition, operator groups will also be created for each namespace.",
@@ -262,13 +262,6 @@
         "operatorgroupExcludes": {
           "type": "array",
           "description": "List of namespaces to exclude the creation of operator groups.",
-          "items": {
-            "type": "string"
-          }
-        },
-        "operatorgroupExcludeTargetNS": {
-          "type": "array",
-          "description": "Specify the list of namespaces where the target namespace field in the corresponding operatorgroup object should be excluded.",
           "items": {
             "type": "string"
           }
@@ -356,28 +349,28 @@
           "type": "string"
         }
       ],
-	  "description": "Description of the applications that will be created in the ArgoCD instances. The Application CRD is the Kubernetes resource object representing a deployed application instance in an environment. Two ways of defining applications: Using a list or using a dictionary.",
-	  "additionalProperties": true,
-	  "properties": {
-         "name": {
-		    "type": "string",
-		    "description": "Name of the namespace."
-          },
-	      "labels": {
-		    "type": "array",
-		    "items": {
-		      "$ref": "#/definitions/NameValue"
-		    }
-	      },
-	      "annotations": {
-		    "type": "array",
-		    "items": {
-		      "$ref": "#/definitions/NameValue"
-		    }
-	      }
-	  }
+      "description": "Description of the applications that will be created in the ArgoCD instances. The Application CRD is the Kubernetes resource object representing a deployed application instance in an environment. Two ways of defining applications: Using a list or using a dictionary.",
+      "additionalProperties": true,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the namespace."
+        },
+        "labels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NameValue"
+          }
+        },
+        "annotations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NameValue"
+          }
+        }
+      }
     },
-	"NameValue": {
+    "NameValue": {
       "type": "object",
       "description": "Description of the applications that will be created in the ArgoCD instances. The Application CRD is the Kubernetes resource object representing a deployed application instance in an environment. Two ways of defining applications: Using a list or using a dictionary.",
       "additionalProperties": true,
@@ -390,8 +383,8 @@
           "type": "string",
           "description": "Name of the namespace."
         }
-	  }
-	},
+      }
+    },
     "Applications": {
       "type": "object",
       "description": "Description of the applications that will be created in the ArgoCD instances. The Application CRD is the Kubernetes resource object representing a deployed application instance in an environment. Two ways of defining applications: Using a list or using a dictionary.",
@@ -521,14 +514,15 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "unseal": {
-          "type": "boolean"
-        },
         "jobs": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Job"
           }
+        },
+        "unseal": {
+          "type": "boolean",
+          "description": "Enable the experimental support for multi source"
         },
         "image": {
           "type": "string",
@@ -592,7 +586,10 @@
           "type": "string"
         },
         "clusterRoleYaml": {
-          "type": ["string", "array"]
+          "type": [
+            "string",
+            "array"
+          ]
         },
         "roleName": {
           "type": "string"
@@ -606,9 +603,6 @@
       ],
       "title": "Imperative"
     },
-    "Unseal": {
-      "type": "boolean"
-    },
     "Job": {
       "type": "object",
       "additionalProperties": false,
@@ -620,7 +614,10 @@
           "type": "string"
         },
         "timeout": {
-          "type": ["integer", "string"]
+          "type": [
+            "integer",
+            "string"
+          ]
         },
         "image": {
           "type": "string",
