@@ -104,11 +104,11 @@ clusterGroup:
       channel: release-2.8
 
     ansible-automation-platform:
-       name: rhacs-operator
+       name: ansible-automation-platform-operator
        namespace: ansible-automation-platform
        channel: stable
 
-    rhacs:
+    rhacs-operator:
        name: rhacs-operator
        channel: stable
 
