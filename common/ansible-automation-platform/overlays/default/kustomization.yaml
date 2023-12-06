@@ -6,22 +6,6 @@ resources:
   - ../../base
 
 patches:
-  - patch: |-
-      - op: replace
-        path: /spec/targetNamespaces
-        value: []
-    target:
-      kind: OperatorGroup
-      name: ansible-automation-platform-operator
-
-  - path: 00-operator-channel-version.yaml
-    target:
-      group: operators.coreos.com
-      kind: Subscription
-      name: ansible-automation-platform
-      namespace: ansible-automation-platform
-      version: v1alpha1
-
   - path: 01-instance-name-change.yaml
     target:
        version: v1beta1

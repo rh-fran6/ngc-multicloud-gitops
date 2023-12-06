@@ -141,24 +141,24 @@ clusterGroup:
       channel: stable
 
     certmanager:
-      name: cert-manager-operator
+      name: openshift-cert-manager-operator
       namespace: cert-manager-operator
       channel: stable-v1
 
     compliance-operator:
-      name: openshift-compliance
+      name: compliance-operator
       namespace: openshift-compliance
       channel: stable
 
     openshift-file-integrity:
-      name: openshift-file-integrity
+      name: file-integrity-operator
       namespace: openshift-file-integrity
       channel: release-0.1
 
     group-sync-operator:
       name: group-sync-operator
       namespace: group-sync-operator
-      channel:
+      channel: alpha
 
     openshift-logging:
       name: cluster-logging
