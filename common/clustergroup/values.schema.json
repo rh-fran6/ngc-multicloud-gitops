@@ -527,10 +527,6 @@
             "$ref": "#/definitions/Job"
           }
         },
-        "unseal": {
-          "type": "boolean",
-          "description": "Enable the experimental support for multi source"
-        },
         "image": {
           "type": "string",
           "default": "registry.redhat.io/ansible-automation-platform-22/ee-supported-rhel8:latest"
@@ -606,6 +602,10 @@
         "jobs"
       ],
       "title": "Imperative"
+    },
+    "Unseal": {
+      "type": "boolean",
+      "description": "Enable the experimental support for multi source"
     },
     "Job": {
       "type": "object",
