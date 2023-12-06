@@ -117,7 +117,7 @@ clusterGroup:
 
     rhbk-keycloak:
       name: rhbk-operator
-      namespace: keycloak
+      namespace: rhbk-keycloak
       channel: stable-v22
 
     elasticsearch:
@@ -207,7 +207,7 @@ clusterGroup:
 
     rhbk-keycloak:
       name: rhbk-keycloak
-      namespace: keycloak
+      namespace: rhbk-keycloak
       project: hub
       kustomize: true
       path: common/redhat-keycloak/overlays/default
