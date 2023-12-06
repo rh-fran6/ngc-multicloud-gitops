@@ -202,12 +202,12 @@ clusterGroup:
       kustomize: true
       path: common/acs/overlays/default
 
-    keycloak:
-      name: keycloak
+    rhbk-keycloak:
+      name: rhbk-keycloak
       namespace: keycloak
       project: hub
       kustomize: true
-      path: common/redhat-keycloak/overlays/stable-v22
+      path: common/redhat-keycloak/overlays/default
 
     external-secrets-operator:
       name: external-secrets-operator
