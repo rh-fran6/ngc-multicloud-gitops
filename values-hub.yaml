@@ -2,100 +2,102 @@ clusterGroup:
   name: hub
   isHubCluster: true
 
-## Create Namespaces & Operator Group
+  ## Create Namespaces & Operator Group
   namespaces:
     - open-cluster-management:
         annotations:
-            openshift.io/display-name: "Advanced Cluster Management for Kubernetes"
+          openshift.io/display-name: "Advanced Cluster Management for Kubernetes"
         labels:
-           openshift.io/cluster-monitoring: 'true'
+          openshift.io/cluster-monitoring: "true"
         operatorGroup: true
         targetNamespaces:
-            - open-cluster-management
+          - open-cluster-management
 
-  #   - hello-world:
-  #       operatorGroup: false
+    - hello-world:
+        operatorGroup: false
 
-  #   - external-secrets-operator:
-  #       operatorGroup: false
+    - external-secrets-operator:
+        operatorGroup: false
 
-  #   - ansible-automation-platform:
-  #       operatorGroup: true
-  #       labels:
-  #          openshift.io/cluster-monitoring: "true"
-  #       targetNamespaces:
-  #           - ansible-automation-platform
+    - ansible-automation-platform:
+        operatorGroup: true
+        labels:
+          openshift.io/cluster-monitoring: "true"
+        targetNamespaces:
+          - ansible-automation-platform
 
-  #   - postgresql:
-  #       operatorGroup: false
+    - postgresql:
+        operatorGroup: false
 
-  #   - stackrox:
-  #       operatorGroup: false    
+    - stackrox:
+        operatorGroup: false
 
-  #   - rhacs-operator:
-  #       operatorGroup: true
-  #       targetNamespace:
-  #          - All Namespaces
-  #       annotations:
-  #          openshift.io/display-name: Red Hat Advanced Cluster Security Operator
+    - rhacs-operator:
+        operatorGroup: true
+        annotations:
+          openshift.io/display-name: Red Hat Advanced Cluster Security Operator
 
-  #   - openshift-operators-redhat:
-  #         operatorGroup: true
+    - openshift-operators-redhat:
+        operatorGroup: true
 
-  #   - openshift-file-integrity:
-  #         annotations:
-  #            openshift.io/display-name: OpenShift File Integrity Operator
-  #            targetNamespaces:
-  #               - openshift-file-integrity
+    - openshift-file-integrity:
+        annotations:
+          openshift.io/display-name: OpenShift File Integrity Operator
+        operatorGroup: true
+        targetNamespaces:
+            - openshift-file-integrity
 
-  #   - openshift-distributed-tracing:
-  #         operatorGroup: true
+    - openshift-distributed-tracing:
+        operatorGroup: true
 
-  #   - group-sync-operator:
-  #         operatorGroup: true
-  #         annotations:
-  #             openshift.io/display-name: "Group Sync Operator"
-  #             openshift.io/description: "Operator that synchronizes groups from external providers"
-  #             labels:
-  #                openshift.io/cluster-monitoring: 'true'
-  #             targetNamespaces:
-  #                 - group-sync-operator
+    - group-sync-operator:
+        operatorGroup: true
+        annotations:
+          openshift.io/display-name: "Group Sync Operator"
+          openshift.io/description: "Operator that synchronizes groups from external providers"
+        labels:
+          openshift.io/cluster-monitoring: "true"
+        targetNamespaces:
+          - group-sync-operator
 
-  #   - costmanagement-metrics-operator:
-  #         annotations:
-  #            openshift.io/description: Operator that provides cost management information to cloud.redhat.com
-  #            openshift.io/display-name: Red Hat Cost Management Operator
-  #         targetNamespaces:
-  #            - costmanagement-metrics-operator
+    - costmanagement-metrics-operator:
+        operatorGroup: true
+        annotations:
+          openshift.io/description: Operator that provides cost management information to cloud.redhat.com
+          openshift.io/display-name: Red Hat Cost Management Operator
+        targetNamespaces:
+          - costmanagement-metrics-operator
 
-  #   - cert-manager-operator:
-  #         annotations:
-  #            openshift.io/display-name: Red Hat Certificate Manager Operator
-  #         labels:
-  #            openshift.io/cluster-monitoring: "true"
-  #         targetNamespaces:
-  #           - cert-manager-operator
+    - cert-manager-operator:
+        operatorGroup: true
+        annotations:
+          openshift.io/display-name: Red Hat Certificate Manager Operator
+        labels:
+          openshift.io/cluster-monitoring: "true"
+        targetNamespaces:
+          - cert-manager-operator
 
-  #   - openshift-compliance:
-  #       operatorGroup: true
-  #       annotations:
-  #           openshift.io/display-name: OpenShift Compliance Operator
-  #       targetNamespaces:
-  #           - openshift-compliance
+    - openshift-compliance:
+        operatorGroup: true
+        annotations:
+          openshift.io/display-name: OpenShift Compliance Operator
+        targetNamespaces:
+          - openshift-compliance
 
-  #   - openshift-logging:
-  #        operatorGroup: true
-  #        labels:
-  #           openshift.io/cluster-monitoring: "true"
-  #        targetNamespaces:
-  #           - openshift-logging
+    - openshift-logging:
+        operatorGroup: true
+        labels:
+          openshift.io/cluster-monitoring: "true"
+        targetNamespaces:
+          - openshift-logging
 
-  #   - keycloak:
-  #        annotations:
-  #           openshift.io/description: "Red Hat Keycloak project"
-  #           openshift.io/display-name: "Red Hat Keycloak"
-  #        targetNamespaces:
-  #           - keycloak
+    - keycloak:
+        annotations:
+          openshift.io/description: "Red Hat Keycloak project"
+          openshift.io/display-name: "Red Hat Keycloak"
+        operatorGroup: true
+        targetNamespaces:
+          - keycloak
 
   subscriptions:
     acm:
@@ -103,78 +105,77 @@ clusterGroup:
       namespace: open-cluster-management
       channel: release-2.8
 
-    # ansible-automation-platform:
-    #    name: ansible-automation-platform
-    #    namespace: ansible-automation-platform
-    #    channel: stable
+    ansible-automation-platform:
+      name: ansible-automation-platform
+      namespace: ansible-automation-platform
+      channel: stable
 
-    # rhacs-operator:
-    #    name: rhacs-operator
-    #    channel: stable
+    rhacs-operator:
+      name: rhacs-operator
+      channel: stable
 
-    # keycloak:
-    #    name: keycloak
-    #    namespace: keycloak
-    #    channel: stable-v22
-    
-    # elasticsearch:
-    #    name: elasticsearch-operator
-    #    channel: stable
-    
-    # jaeger:
-    #    name: jaeger-product
-    #    channel: stable
+    keycloak:
+      name: keycloak
+      namespace: keycloak
+      channel: stable-v22
 
-    # kiali:
-    #    name: kiali-ossm
-    #    channel: stable
+    elasticsearch:
+      name: elasticsearch-operator
+      channel: stable
 
-    # ossm:
-    #    name: servicemeshoperator
-    #    channel: stable
-    
-    # cost:
-    #    name: costmanagement-metrics-operator
-    #    namespace: costmanagement-metrics-operator
-    #    channel: stable
+    jaeger:
+      name: jaeger-product
+      channel: stable
 
-    # certmanager:
-    #    name: cert-manager-operator
-    #    namespace: cert-manager-operator
-    #    channel: stable-v1
+    kiali:
+      name: kiali-ossm
+      channel: stable
 
-    # compliance-operator:
-    #    name: openshift-compliance
-    #    namespace: openshift-compliance
-    #    channel: stable
+    ossm:
+      name: servicemeshoperator
+      channel: stable
 
-    # openshift-file-integrity:
-    #    name: openshift-file-integrity
-    #    namespace: openshift-file-integrity
-    #    channel: release-0.1
+    cost:
+      name: costmanagement-metrics-operator
+      namespace: costmanagement-metrics-operator
+      channel: stable
 
-    # group-sync-operator:
-    #    name: group-sync-operator
-    #    namespace: group-sync-operator
-    #    channel:
+    certmanager:
+      name: cert-manager-operator
+      namespace: cert-manager-operator
+      channel: stable-v1
 
-    # openshift-logging:
-    #    name: openshift-logging
-    #    namespace: openshift-logging
-    #    channel: v1alpha1
+    compliance-operator:
+      name: openshift-compliance
+      namespace: openshift-compliance
+      channel: stable
 
-    # openshift-pipelines-operator:
-    #    name: openshift-pipelines-operator
-    #    channel: stable
-       
-      
+    openshift-file-integrity:
+      name: openshift-file-integrity
+      namespace: openshift-file-integrity
+      channel: release-0.1
+
+    group-sync-operator:
+      name: group-sync-operator
+      namespace: group-sync-operator
+      channel:
+
+    openshift-logging:
+      name: openshift-logging
+      namespace: openshift-logging
+      channel: v1alpha1
+
+    openshift-pipelines-operator:
+      name: openshift-pipelines-operator
+      channel: stable
+
   projects:
     - hub
     - hello-world
     - postgresql
 
   sharedValueFiles:
-    - '/overrides/values-{{ $.Values.global.clusterPlatform }}.yaml'
+    - "/overrides/values-{{ $.Values.global.clusterPlatform }}.yaml"
 
   applications:
     acm:
@@ -183,75 +184,75 @@ clusterGroup:
       project: hub
       path: common/acm
       ignoreDifferences:
-      - group: internal.open-cluster-management.io
-        kind: ManagedClusterInfo
-        jsonPointers:
-          - /spec/loggingCA
-      
-    # aap-instance:
-    #   name: ansible-automation-platform
-    #   namespace: aap
-    #   project: hub
-    #   kustomize: true
-    #   path: common/ansible-automation-platform/overlays/default
+        - group: internal.open-cluster-management.io
+          kind: ManagedClusterInfo
+          jsonPointers:
+            - /spec/loggingCA
 
-    # rhacs:
-    #   name: rhacs-operator
-    #   namespace: rhacs-operator
-    #   project: hub
-    #   kustomize: true
-    #   path: common/acs/overlays/default
+    aap-instance:
+      name: ansible-automation-platform
+      namespace: aap
+      project: hub
+      kustomize: true
+      path: common/ansible-automation-platform/overlays/default
 
-    # keycloak:
-    #   name: keycloak
-    #   namespace: keycloak
-    #   project: hub
-    #   kustomize: true
-    #   path: common/redhat-keycloak/overlays/stable-v22
-    
-    # external-secrets-operator:
-    #   name: external-secrets-operator
-    #   namespace: external-secrets-operator
-    #   project: hub
-    #   path: common/external-secrets-operator
+    rhacs:
+      name: rhacs-operator
+      namespace: rhacs-operator
+      project: hub
+      kustomize: true
+      path: common/acs/overlays/default
 
-    # hello-world:
-    #   name: hello-world
-    #   namespace: hello-world
-    #   project: hello-world
-    #   path: charts/all/hello-world
+    keycloak:
+      name: keycloak
+      namespace: keycloak
+      project: hub
+      kustomize: true
+      path: common/redhat-keycloak/overlays/stable-v22
 
-    # ossm:
-    #   name: servicemeshoperator
-    #   namespace: openshift-operators
-    #   project: hub
-    #   path: common/ossm/overlays/default
+    external-secrets-operator:
+      name: external-secrets-operator
+      namespace: external-secrets-operator
+      project: hub
+      path: common/external-secrets-operator
 
-    # postgresql:
-    #   name: postgresql
-    #   namespace: postgresql
-    #   project: postgresql
-    #   path: charts/all/postgresql
+    hello-world:
+      name: hello-world
+      namespace: hello-world
+      project: hello-world
+      path: charts/all/hello-world
+
+    ossm:
+      name: servicemeshoperator
+      namespace: openshift-operators
+      project: hub
+      path: common/ossm/overlays/default
+
+    postgresql:
+      name: postgresql
+      namespace: postgresql
+      project: postgresql
+      path: charts/all/postgresql
 
   imperative:
     # unseal: false
     jobs:
-    - name: hello-world
-      # ansible playbook to be run
-      playbook: common/ansible/playbooks/hello-world/hello-world.yaml
-      # per playbook timeout in seconds
-      timeout: 234
-      # verbosity: "-v"
+      - name: hello-world
+        # ansible playbook to be run
+        playbook: common/ansible/playbooks/hello-world/hello-world.yaml
+        # per playbook timeout in seconds
+        timeout: 234
+        # verbosity: "-v"
 
   managedClusterGroups:
     exampleRegion:
       name: group-one
       acmlabels:
-      - name: clusterGroup
-        value: group-one
+        - name: clusterGroup
+          value: group-one
       helmOverrides:
-      - name: clusterGroup.isHubCluster
-        value: false
+        - name: clusterGroup.isHubCluster
+          value: false
 
       # Before enabling cluster provisioning, ensure AWS and/or Azure
       #   credentials and OCP pull secrets are defined in Vault.
@@ -279,7 +280,6 @@ clusterGroup:
       #    clusters:
       #    - Two
       #    - Three
-
 #  To have apps in multiple flavors, use namespaces and use helm overrides as appropriate
 #
 #    pipelines:
