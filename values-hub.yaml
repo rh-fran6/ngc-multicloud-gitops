@@ -161,8 +161,8 @@ clusterGroup:
       channel:
 
     openshift-logging:
-      name: openshift-logging
-      namespace: cluster-logging
+      name: cluster-logging
+      namespace: openshift-logging
       channel: v1alpha1
 
     openshift-pipelines-operator:
