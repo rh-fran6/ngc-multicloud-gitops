@@ -98,3 +98,16 @@ clusterGroup:
       helmOverrides:
       - name: clusterGroup.isHubCluster
         value: false
+
+
+
+
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: argocd-tls-certs-cm
+#   namespace: {{ $namespace }}
+# data:
+#   <your git repo name>: |
+#     output from command -> openssl s_client -connect <your git repo url> 2>/dev/null </dev/null |  sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p'
+# {{- end }}
