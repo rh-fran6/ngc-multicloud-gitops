@@ -81,7 +81,7 @@ clusterGroup:
 #    project: datacenter
 #    path: applications/acm
 
-secretStore:
+secretStore: {}
   # name: vault-backend
   # kind: ClusterSecretStore
 
