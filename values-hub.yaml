@@ -232,7 +232,7 @@ clusterGroup:
       path: charts/all/postgresql
 
   imperative:
-    unseal: false
+    # unseal: false
     jobs:
     - name: hello-world
       # ansible playbook to be run
