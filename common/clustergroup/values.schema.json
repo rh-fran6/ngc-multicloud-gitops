@@ -607,8 +607,7 @@
       "title": "Imperative"
     },
     "Unseal": {
-      "type": "boolean",
-      "description": "Enable the experimental support for multi source"
+      "type": "boolean"
     },
     "Job": {
       "type": "object",
