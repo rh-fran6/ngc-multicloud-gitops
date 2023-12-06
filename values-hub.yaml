@@ -246,6 +246,8 @@ clusterGroup:
         timeout: 234
         # verbosity: "-v"
 
+  secretStore: {}
+
   
 
   managedClusterGroups:
