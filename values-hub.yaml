@@ -23,8 +23,6 @@ clusterGroup:
         operatorGroup: true
         labels:
           openshift.io/cluster-monitoring: "true"
-        targetNamespaces:
-          - ansible-automation-platform
 
     - postgresql:
         operatorGroup: false
@@ -108,14 +106,14 @@ clusterGroup:
     ansible-automation-platform:
       name: ansible-automation-platform-operator
       namespace: ansible-automation-platform
-      channel: stable-2.4
+      channel: stable-2.4-cluster-scoped
 
     rhacs-operator:
       name: rhacs-operator
       channel: stable
 
     keycloak:
-      name: keycloak
+      name: rhbk-operator
       namespace: keycloak
       channel: stable-v22
 
