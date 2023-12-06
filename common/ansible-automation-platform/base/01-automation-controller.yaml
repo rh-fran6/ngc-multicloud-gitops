@@ -10,7 +10,7 @@ spec:
   # route_tls_termination_mechanism: Edge
   # garbage_collect_secrets: true
   # ingress_type: Route
-  ingress_type: None
+  ingress_type: none
   image_pull_policy: IfNotPresent
   # task_privileged: false
   # projects_persistence: false
@@ -29,21 +29,21 @@ spec:
   set_self_labels: true
 ---
 # ## Customize Route for re-encryption
-# apiVersion: route.openshift.io/v1
-# kind: Route
-# metadata:
-#   name: ngc-aap-controller
-#   namespace: ansible-automation-platform
-# spec:
-#   host: ngc-aap-controller-ansible-automation-platform.apps.dd-aro.eastus.aroapp.io
-#   port:
-#     targetPort: http
-#   tls:
-#     insecureEdgeTerminationPolicy: Redirect
-#     termination: reencrypt
-#   to:
-#     kind: Service
-#     name: ngc-aap-controller-service
-#     weight: 100
-#   wildcardPolicy: None
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: ngc-aap-controller
+  namespace: ansible-automation-platform
+spec:
+  host: ngc-aap-controller-ansible-automation-platform.apps.dd-aro.eastus.aroapp.io
+  port:
+    targetPort: http
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: reencrypt
+  to:
+    kind: Service
+    name: ngc-aap-controller-service
+    weight: 100
+  wildcardPolicy: None
 
