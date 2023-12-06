@@ -157,6 +157,7 @@ clusterGroup:
       name: group-sync-operator
       namespace: group-sync-operator
       channel: alpha
+      source: community-operatorsß
 
     openshift-logging:
       name: cluster-logging
