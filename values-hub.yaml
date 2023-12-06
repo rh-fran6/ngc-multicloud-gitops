@@ -13,89 +13,89 @@ clusterGroup:
         targetNamespaces:
             - open-cluster-management
 
-    - hello-world:
-        operatorGroup: false
+  #   - hello-world:
+  #       operatorGroup: false
 
-    - external-secrets-operator:
-        operatorGroup: false
+  #   - external-secrets-operator:
+  #       operatorGroup: false
 
-    - ansible-automation-platform:
-        operatorGroup: true
-        labels:
-           openshift.io/cluster-monitoring: "true"
-        targetNamespaces:
-            - ansible-automation-platform
+  #   - ansible-automation-platform:
+  #       operatorGroup: true
+  #       labels:
+  #          openshift.io/cluster-monitoring: "true"
+  #       targetNamespaces:
+  #           - ansible-automation-platform
 
-    - postgresql:
-        operatorGroup: false
+  #   - postgresql:
+  #       operatorGroup: false
 
-    - stackrox:
-        operatorGroup: false    
+  #   - stackrox:
+  #       operatorGroup: false    
 
-    - rhacs-operator:
-        operatorGroup: true
-        targetNamespace:
-           - All Namespaces
-        annotations:
-           openshift.io/display-name: Red Hat Advanced Cluster Security Operator
+  #   - rhacs-operator:
+  #       operatorGroup: true
+  #       targetNamespace:
+  #          - All Namespaces
+  #       annotations:
+  #          openshift.io/display-name: Red Hat Advanced Cluster Security Operator
 
-    - openshift-operators-redhat:
-          operatorGroup: true
+  #   - openshift-operators-redhat:
+  #         operatorGroup: true
 
-    - openshift-file-integrity:
-          annotations:
-             openshift.io/display-name: OpenShift File Integrity Operator
-             targetNamespaces:
-                - openshift-file-integrity
+  #   - openshift-file-integrity:
+  #         annotations:
+  #            openshift.io/display-name: OpenShift File Integrity Operator
+  #            targetNamespaces:
+  #               - openshift-file-integrity
 
-    - openshift-distributed-tracing:
-          operatorGroup: true
+  #   - openshift-distributed-tracing:
+  #         operatorGroup: true
 
-    - group-sync-operator:
-          operatorGroup: true
-          annotations:
-              openshift.io/display-name: "Group Sync Operator"
-              openshift.io/description: "Operator that synchronizes groups from external providers"
-              labels:
-                 openshift.io/cluster-monitoring: 'true'
-              targetNamespaces:
-                  - group-sync-operator
+  #   - group-sync-operator:
+  #         operatorGroup: true
+  #         annotations:
+  #             openshift.io/display-name: "Group Sync Operator"
+  #             openshift.io/description: "Operator that synchronizes groups from external providers"
+  #             labels:
+  #                openshift.io/cluster-monitoring: 'true'
+  #             targetNamespaces:
+  #                 - group-sync-operator
 
-    - costmanagement-metrics-operator:
-          annotations:
-             openshift.io/description: Operator that provides cost management information to cloud.redhat.com
-             openshift.io/display-name: Red Hat Cost Management Operator
-          targetNamespaces:
-             - costmanagement-metrics-operator
+  #   - costmanagement-metrics-operator:
+  #         annotations:
+  #            openshift.io/description: Operator that provides cost management information to cloud.redhat.com
+  #            openshift.io/display-name: Red Hat Cost Management Operator
+  #         targetNamespaces:
+  #            - costmanagement-metrics-operator
 
-    - cert-manager-operator:
-          annotations:
-             openshift.io/display-name: Red Hat Certificate Manager Operator
-          labels:
-             openshift.io/cluster-monitoring: "true"
-          targetNamespaces:
-            - cert-manager-operator
+  #   - cert-manager-operator:
+  #         annotations:
+  #            openshift.io/display-name: Red Hat Certificate Manager Operator
+  #         labels:
+  #            openshift.io/cluster-monitoring: "true"
+  #         targetNamespaces:
+  #           - cert-manager-operator
 
-    - openshift-compliance:
-        operatorGroup: true
-        annotations:
-            openshift.io/display-name: OpenShift Compliance Operator
-        targetNamespaces:
-            - openshift-compliance
+  #   - openshift-compliance:
+  #       operatorGroup: true
+  #       annotations:
+  #           openshift.io/display-name: OpenShift Compliance Operator
+  #       targetNamespaces:
+  #           - openshift-compliance
 
-    - openshift-logging:
-         operatorGroup: true
-         labels:
-            openshift.io/cluster-monitoring: "true"
-         targetNamespaces:
-            - openshift-logging
+  #   - openshift-logging:
+  #        operatorGroup: true
+  #        labels:
+  #           openshift.io/cluster-monitoring: "true"
+  #        targetNamespaces:
+  #           - openshift-logging
 
-    - keycloak:
-         annotations:
-            openshift.io/description: "Red Hat Keycloak project"
-            openshift.io/display-name: "Red Hat Keycloak"
-         targetNamespaces:
-            - keycloak
+  #   - keycloak:
+  #        annotations:
+  #           openshift.io/description: "Red Hat Keycloak project"
+  #           openshift.io/display-name: "Red Hat Keycloak"
+  #        targetNamespaces:
+  #           - keycloak
 
   subscriptions:
     acm:
@@ -103,69 +103,69 @@ clusterGroup:
       namespace: open-cluster-management
       channel: release-2.8
 
-    ansible-automation-platform:
-       name: ansible-automation-platform
-       namespace: ansible-automation-platform
-       channel: stable
+    # ansible-automation-platform:
+    #    name: ansible-automation-platform
+    #    namespace: ansible-automation-platform
+    #    channel: stable
 
-    rhacs-operator:
-       name: rhacs-operator
-       channel: stable
+    # rhacs-operator:
+    #    name: rhacs-operator
+    #    channel: stable
 
-    keycloak:
-       name: keycloak
-       namespace: keycloak
-       channel: stable-v22
+    # keycloak:
+    #    name: keycloak
+    #    namespace: keycloak
+    #    channel: stable-v22
     
-    elasticsearch:
-       name: elasticsearch-operator
-       channel: stable
+    # elasticsearch:
+    #    name: elasticsearch-operator
+    #    channel: stable
     
-    jaeger:
-       name: jaeger-product
-       channel: stable
+    # jaeger:
+    #    name: jaeger-product
+    #    channel: stable
 
-    kiali:
-       name: kiali-ossm
-       channel: stable
+    # kiali:
+    #    name: kiali-ossm
+    #    channel: stable
 
-    ossm:
-       name: servicemeshoperator
-       channel: stable
+    # ossm:
+    #    name: servicemeshoperator
+    #    channel: stable
     
-    cost:
-       name: costmanagement-metrics-operator
-       namespace: costmanagement-metrics-operator
-       channel: stable
+    # cost:
+    #    name: costmanagement-metrics-operator
+    #    namespace: costmanagement-metrics-operator
+    #    channel: stable
 
-    certmanager:
-       name: cert-manager-operator
-       namespace: cert-manager-operator
-       channel: stable-v1
+    # certmanager:
+    #    name: cert-manager-operator
+    #    namespace: cert-manager-operator
+    #    channel: stable-v1
 
-    compliance-operator:
-       name: openshift-compliance
-       namespace: openshift-compliance
-       channel: stable
+    # compliance-operator:
+    #    name: openshift-compliance
+    #    namespace: openshift-compliance
+    #    channel: stable
 
-    openshift-file-integrity:
-       name: openshift-file-integrity
-       namespace: openshift-file-integrity
-       channel: release-0.1
+    # openshift-file-integrity:
+    #    name: openshift-file-integrity
+    #    namespace: openshift-file-integrity
+    #    channel: release-0.1
 
-    group-sync-operator:
-       name: group-sync-operator
-       namespace: group-sync-operator
-       channel:
+    # group-sync-operator:
+    #    name: group-sync-operator
+    #    namespace: group-sync-operator
+    #    channel:
 
-    openshift-logging:
-       name: openshift-logging
-       namespace: openshift-logging
-       channel: v1alpha1
+    # openshift-logging:
+    #    name: openshift-logging
+    #    namespace: openshift-logging
+    #    channel: v1alpha1
 
-    openshift-pipelines-operator:
-       name: openshift-pipelines-operator
-       channel: stable
+    # openshift-pipelines-operator:
+    #    name: openshift-pipelines-operator
+    #    channel: stable
        
       
   projects:
@@ -188,50 +188,50 @@ clusterGroup:
         jsonPointers:
           - /spec/loggingCA
       
-    aap-instance:
-      name: ansible-automation-platform
-      namespace: aap
-      project: hub
-      kustomize: true
-      path: common/ansible-automation-platform/overlays/default
+    # aap-instance:
+    #   name: ansible-automation-platform
+    #   namespace: aap
+    #   project: hub
+    #   kustomize: true
+    #   path: common/ansible-automation-platform/overlays/default
 
-    rhacs:
-      name: rhacs-operator
-      namespace: rhacs-operator
-      project: hub
-      kustomize: true
-      path: common/acs/overlays/default
+    # rhacs:
+    #   name: rhacs-operator
+    #   namespace: rhacs-operator
+    #   project: hub
+    #   kustomize: true
+    #   path: common/acs/overlays/default
 
-    keycloak:
-      name: keycloak
-      namespace: keycloak
-      project: hub
-      kustomize: true
-      path: common/redhat-keycloak/overlays/stable-v22
+    # keycloak:
+    #   name: keycloak
+    #   namespace: keycloak
+    #   project: hub
+    #   kustomize: true
+    #   path: common/redhat-keycloak/overlays/stable-v22
     
-    external-secrets-operator:
-      name: external-secrets-operator
-      namespace: external-secrets-operator
-      project: hub
-      path: common/external-secrets-operator
+    # external-secrets-operator:
+    #   name: external-secrets-operator
+    #   namespace: external-secrets-operator
+    #   project: hub
+    #   path: common/external-secrets-operator
 
-    hello-world:
-      name: hello-world
-      namespace: hello-world
-      project: hello-world
-      path: charts/all/hello-world
+    # hello-world:
+    #   name: hello-world
+    #   namespace: hello-world
+    #   project: hello-world
+    #   path: charts/all/hello-world
 
-    ossm:
-      name: servicemeshoperator
-      namespace: openshift-operators
-      project: hub
-      path: common/ossm/overlays/default
+    # ossm:
+    #   name: servicemeshoperator
+    #   namespace: openshift-operators
+    #   project: hub
+    #   path: common/ossm/overlays/default
 
-    postgresql:
-      name: postgresql
-      namespace: postgresql
-      project: postgresql
-      path: charts/all/postgresql
+    # postgresql:
+    #   name: postgresql
+    #   namespace: postgresql
+    #   project: postgresql
+    #   path: charts/all/postgresql
 
   imperative:
     # unseal: false
