@@ -104,7 +104,7 @@ clusterGroup:
       channel: release-2.8
 
     ansible-automation-platform:
-       name: ansible-automation-platform-operator
+       name: ansible-automation-platform
        namespace: ansible-automation-platform
        channel: stable
 
