@@ -34,6 +34,7 @@ clusterGroup:
 
     - rhacs-operator:
         operatorGroup: true
+        targetNamespace:
         annotations:
            openshift.io/display-name: Red Hat Advanced Cluster Security Operator
 
