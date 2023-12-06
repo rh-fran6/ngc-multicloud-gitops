@@ -166,7 +166,7 @@ clusterGroup:
       channel: v1alpha1
 
     openshift-pipelines-operator:
-      name: openshift-pipelines-operator
+      name: openshift-pipelines-operator-rh
       channel: stable
 
   projects:
