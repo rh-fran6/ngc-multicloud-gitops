@@ -167,7 +167,7 @@ clusterGroup:
 
     openshift-pipelines-operator:
       name: openshift-pipelines-operator-rh
-      channel: stable
+      channel: pipelines-1.9
 
   projects:
     - hub
