@@ -12,3 +12,6 @@ main:
 
   multiSourceConfig:
     enabled: false
+
+clusterGroup:
+  - secretStore: {}
