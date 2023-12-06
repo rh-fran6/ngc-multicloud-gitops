@@ -30,6 +30,9 @@ clusterGroup:
     - stackrox:
         operatorGroup: false
 
+    - istio-system:
+        operatorGroup: false
+
     - rhacs-operator:
         operatorGroup: true
         annotations:
@@ -225,7 +228,7 @@ clusterGroup:
       name: servicemeshoperator
       namespace: openshift-operators
       project: hub
-      path: common/ossm/overlays/default
+      path: common/openshift-servicemesh/instance/overlays/default
 
     postgresql:
       name: postgresql
