@@ -89,13 +89,13 @@ clusterGroup:
         targetNamespaces:
           - openshift-logging
 
-    - keycloak:
+    - rhbk-keycloak:
         annotations:
           openshift.io/description: "Red Hat Keycloak project"
-          openshift.io/display-name: "Red Hat Keycloak"
+          openshift.io/display-name: "Red Hat Build of Keycloak"
         operatorGroup: true
         targetNamespaces:
-          - keycloak
+          - rhbk-keycloak
 
   subscriptions:
     acm:
@@ -112,7 +112,7 @@ clusterGroup:
       name: rhacs-operator
       channel: stable
 
-    keycloak:
+    rhbk-keycloak:
       name: rhbk-operator
       namespace: keycloak
       channel: stable-v22
