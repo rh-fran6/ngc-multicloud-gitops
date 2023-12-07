@@ -239,6 +239,7 @@ clusterGroup:
     patch-argo:
       name: patch-argo
       project: hub
+      kustomize: true
       path: common/patch-argo/overlays
 
   imperative:
