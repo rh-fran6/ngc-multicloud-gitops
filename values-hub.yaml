@@ -235,6 +235,11 @@ clusterGroup:
       namespace: postgresql
       project: postgresql
       path: charts/all/postgresql
+    
+    patch-argo:
+      name: patch-argo
+      project: hub
+      path: common/patch-argo/overlays
 
   imperative:
     unseal: false
@@ -245,9 +250,6 @@ clusterGroup:
         # per playbook timeout in seconds
         timeout: 234
         # verbosity: "-v"
-
-
-  
 
   managedClusterGroups:
     exampleRegion:
