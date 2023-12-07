@@ -4,6 +4,6 @@ kind: Kustomization
 
 resources:
   - hub-gitops-git-cm.yaml
-  - hub-gitops-server-route.yaml
+  # - hub-gitops-server-route.yaml
   - openshift-gitops-git-cm.yaml
-  - openshift-gitops-server-route.yaml
+  # - openshift-gitops-server-route.yaml
