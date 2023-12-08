@@ -238,6 +238,7 @@ clusterGroup:
       path: charts/all/postgresql
     
   imperative:
+    ## disable vault unseal - no vault instance running
     unseal: false
     jobs:
       - name: hello-world
