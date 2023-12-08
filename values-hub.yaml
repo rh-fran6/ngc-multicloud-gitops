@@ -228,6 +228,7 @@ clusterGroup:
       name: servicemeshoperator
       namespace: openshift-operators
       project: hub
+      kustomize: true
       path: common/openshift-servicemesh/instance/overlays/default
 
     postgresql:
