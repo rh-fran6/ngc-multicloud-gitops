@@ -218,11 +218,11 @@ clusterGroup:
       kustomize: true
       path: common/redhat-keycloak/overlays/default
 
-    external-secrets-operator:
-      name: external-secrets-operator
-      namespace: external-secrets-operator
+    ekho-external-secrets:
+      name: exho-externla-secrets
+      namespace: ekho-external-secrets
       project: hub
-      path: common/external-secrets-operator
+      path: common/ekho-external-secrets
 
     hello-world:
       name: hello-world
