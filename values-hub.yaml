@@ -223,7 +223,7 @@ clusterGroup:
       namespace: ekho-external-secrets
       project: hub
       kustomize: true
-      path: common/ekho-external-secrets
+      path: common/ekho-external-secrets/overlays/default
 
     hello-world:
       name: hello-world
