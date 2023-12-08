@@ -222,6 +222,7 @@ clusterGroup:
       name: exho-externla-secrets
       namespace: ekho-external-secrets
       project: hub
+      kustomize: true
       path: common/ekho-external-secrets
 
     hello-world:
