@@ -202,48 +202,74 @@ clusterGroup:
       namespace: aap
       project: hub
       kustomize: true
-      path: common/ansible-automation-platform/overlays/default
+      path: charts/all/operators/ansible-automation-platform/overlays/default
 
     rhacs:
       name: rhacs-operator
       namespace: rhacs-operator
       project: hub
       kustomize: true
-      path: common/acs/overlays/default
+      path: charts/all/operators/acs/overlays/default
 
     rhbk-keycloak:
       name: rhbk-keycloak
       namespace: rhbk-keycloak
       project: hub
       kustomize: true
-      path: common/redhat-keycloak/overlays/default
+      path: charts/all/operators/redhat-keycloak/overlays/default
 
     ekho-external-secrets:
       name: exho-externla-secrets
       namespace: ekho-external-secrets
       project: hub
       kustomize: true
-      path: common/ekho-external-secrets/overlays/default
+      path: charts/all/operators/ekho-external-secrets/overlays/default
 
     hello-world:
       name: hello-world
       namespace: hello-world
       project: hello-world
-      path: charts/all/hello-world
+      path: charts/all/app/hello-world
+    
+    openshift-logging:
+      name: openshift-logging
+      namespace: openshift-logging
+      project: hub
+      path: charts/all/operators/openshift-logging/instance/overlays/default
+
+    openshift-compliance:
+      name: openshift-logging
+      namespace: openshift-logging
+      project: hub
+      path: charts/all/operators/compliance-operator/overlays/default
+
+    openshift-file-integrity:
+      name: openshift-file-integrity
+      namespace: openshift-file-integrity
+      project: hub
+      path: charts/all/operators/file-integrity-operator/instance/overlays/default
+
+    cost-management-operator:
+      name: costmanagement-metrics-operator
+      namespace: costmanagement-metrics-operator
+      project: hub
+      path: charts/all/operators/costmanagement-metrics-operator/instance/overlays/default
 
     ossm:
       name: servicemeshoperator
       namespace: openshift-operators
       project: hub
       kustomize: true
-      path: common/openshift-servicemesh/instance/overlays/default
+      path: charts/all/operators/openshift-servicemesh/instance/overlays/default
 
     postgresql:
       name: postgresql
       namespace: postgresql
       project: postgresql
-      path: charts/all/postgresql
-    
+      path: charts/all/apps/postgresql
+      # overrides:
+      #    - name: image.repository
+      #      value: "example-registry.com"
   imperative:
     ## disable vault unseal - no vault instance running
     unseal: false
