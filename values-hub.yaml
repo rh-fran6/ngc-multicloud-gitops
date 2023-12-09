@@ -255,7 +255,7 @@ clusterGroup:
       name: costmanagement-metrics-operator
       namespace: costmanagement-metrics-operator
       project: hub
-      path: charts/all/operators/costmanagement-metrics-operator/instance/overlays/default
+      path: charts/all/operators/cost-management-operator/overlays/default
 
     ossm:
       name: servicemeshoperator
