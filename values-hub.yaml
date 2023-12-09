@@ -238,8 +238,8 @@ clusterGroup:
       path: charts/all/operators/openshift-logging/instance/overlays/default
 
     openshift-compliance:
-      name: openshift-logging
-      namespace: openshift-logging
+      name: openshift-compliance
+      namespace: openshift-compliance
       project: hub
       path: charts/all/operators/compliance-operator/overlays/default
 
