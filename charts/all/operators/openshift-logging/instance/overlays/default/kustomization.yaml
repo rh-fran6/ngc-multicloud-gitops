@@ -9,14 +9,14 @@ patches:
   - patch: |-
       - op: replace
         path: /spec/logStore/elasticsearch/storage/storageClassName
-        value: 'gp2'
+        value: 'managed-csi'
     target:
       kind: ClusterLogging
       name: instance
   - patch: |-
       - op: replace
         path: /spec/href
-        value: 'https://kibana-openshift-logging.apps.mgnt.adetalhouet.rhtelco.io'
+        value: 'https://kibana-openshift-logging.apps.dd-aro.eastus.aroapp.io'
     target:
       kind: ConsoleLink
       name: kibana-public-url

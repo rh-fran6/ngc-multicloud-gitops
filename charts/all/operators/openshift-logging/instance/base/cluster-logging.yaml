@@ -21,7 +21,7 @@ spec:
       redundancyPolicy: SingleRedundancy
       storage:
         size: 50G
-        storageClassName: managed-csi
+        storageClassName: PATCH-ME
     retentionPolicy:
       application:
         maxAge: 1d
