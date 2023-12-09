@@ -249,12 +249,14 @@ clusterGroup:
       name: openshift-file-integrity
       namespace: openshift-file-integrity
       project: hub
+      kustomize: true
       path: charts/all/operators/file-integrity-operator/instance/overlays/default
 
     cost-management-operator:
       name: costmanagement-metrics-operator
       namespace: costmanagement-metrics-operator
       project: hub
+      kustomize: true
       path: charts/all/operators/cost-management-operator/overlays/default
 
     ossm:
