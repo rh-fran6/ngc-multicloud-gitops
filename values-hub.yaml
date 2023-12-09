@@ -219,7 +219,7 @@ clusterGroup:
       path: charts/all/operators/redhat-keycloak/overlays/default
 
     ekho-external-secrets:
-      name: exho-externla-secrets
+      name: exho-external-secrets
       namespace: ekho-external-secrets
       project: hub
       kustomize: true
@@ -229,18 +229,20 @@ clusterGroup:
       name: hello-world
       namespace: hello-world
       project: hello-world
-      path: charts/all/app/hello-world
+      path: charts/all/apps/hello-world
     
     openshift-logging:
       name: openshift-logging
       namespace: openshift-logging
       project: hub
+      kustomize: true
       path: charts/all/operators/openshift-logging/instance/overlays/default
 
     openshift-compliance:
       name: openshift-compliance
       namespace: openshift-compliance
       project: hub
+      kustomize: true
       path: charts/all/operators/compliance-operator/overlays/default
 
     openshift-file-integrity:
