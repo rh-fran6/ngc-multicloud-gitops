@@ -9,7 +9,7 @@ patches:
   - patch: |-
       - op: replace
         path: /spec/logStore/elasticsearch/storage/storageClassName
-        value: 'managed-csi'
+        value: 'azurefile-csi'
     target:
       kind: ClusterLogging
       name: instance
