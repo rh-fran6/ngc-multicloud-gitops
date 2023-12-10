@@ -44,7 +44,7 @@ spec:
       key: password
   http:
     httpEnabled: true
-    httpPort: 8180
+    # httpPort: 8180
   hostname:
     hostname: keycloak.apps.dd-aro.eastus.aroapp.io
     strict: false
