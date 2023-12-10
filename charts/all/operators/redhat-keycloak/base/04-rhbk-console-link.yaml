@@ -1,7 +1,7 @@
 apiVersion: console.openshift.io/v1
 kind: ConsoleLink
 metadata:
-  name: controller
+  name: rhbk-sso-dev
 spec:
   applicationMenu:
     section: Red Hat applications
