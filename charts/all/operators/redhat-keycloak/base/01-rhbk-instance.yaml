@@ -46,7 +46,7 @@ spec:
   http:
     httpEnabled: true
   hostname:
-    hostname: keycloak.apps.dd-aro.eastus.aroapp.io
+    # hostname: keycloak.apps.dd-aro.eastus.aroapp.io
     strict: false    
     strictBackchannel: false
-    proxy: edge
+    # proxy: edge
