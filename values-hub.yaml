@@ -211,12 +211,12 @@ clusterGroup:
       kustomize: true
       path: charts/all/operators/acs/overlays/default
 
-    # rhbk-keycloak:
-    #   name: rhbk-keycloak
-    #   namespace: rhbk-keycloak
-    #   project: hub
-    #   kustomize: true
-    #   path: charts/all/operators/redhat-keycloak/overlays/default
+    rhbk-keycloak:
+      name: rhbk-keycloak
+      namespace: rhbk-keycloak
+      project: hub
+      kustomize: true
+      path: charts/all/operators/redhat-keycloak/overlays/default
 
     ekho-external-secrets:
       name: exho-external-secrets
