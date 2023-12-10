@@ -42,11 +42,13 @@ spec:
     passwordSecret:
       name: postgres-db-secret
       key: password
-  # http:
-  #   httpEnabled: true
-  #   httpPort: 8180
+  http:
+    httpEnabled: true
+    httpPort: 8180
   hostname:
     hostname: keycloak.apps.dd-aro.eastus.aroapp.io
+    strict: false    
+    strictBackchannel: false
   serverConfiguration:
     - name: hostname-strict-https
       value: "false"
