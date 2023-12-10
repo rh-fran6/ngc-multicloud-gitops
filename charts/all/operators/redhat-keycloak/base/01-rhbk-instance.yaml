@@ -33,7 +33,6 @@ metadata:
   name: rhbk-sso-dev
   namespace: rhbk-keycloak
 spec:
-  proxy: edge
   instance: 3
   db:
     vendor: postgres
@@ -51,6 +50,7 @@ spec:
     hostname: keycloak.apps.dd-aro.eastus.aroapp.io
     strict: false    
     strictBackchannel: false
+    proxy: edge
   # serverConfiguration:
   #   - name: hostname-strict-https
   #     value: "false"
