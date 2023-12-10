@@ -47,7 +47,7 @@ spec:
     httpEnabled: true
   additionalOptions:
     - name: KC_PROXY
-      value: edge
+      value: passthrough
   hostname:
     # hostname: keycloak.apps.dd-aro.eastus.aroapp.io
     strict: false    
