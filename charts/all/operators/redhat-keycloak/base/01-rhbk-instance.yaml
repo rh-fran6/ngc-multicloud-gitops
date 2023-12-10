@@ -33,6 +33,7 @@ metadata:
   name: rhbk-sso-dev
   namespace: rhbk-keycloak
 spec:
+  proxy: edge
   instance: 3
   db:
     vendor: postgres
