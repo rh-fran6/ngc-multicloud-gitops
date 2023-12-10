@@ -6,3 +6,4 @@ resources:
   - 02-rhbk-secret.yaml
   - 03-rhbk-certificate-secret.yaml
   - 04-rhbk-console-link.yaml
+  - 05-rhbk-route.yaml
