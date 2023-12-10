@@ -46,6 +46,7 @@ spec:
     httpEnabled: true
     httpPort: 8180
   hostname:
+    admin: keycloak10.apps.dd-aro.eastus.aroapp.io
     hostname: keycloak.apps.dd-aro.eastus.aroapp.io
     strict: false    
     strictBackchannel: false
