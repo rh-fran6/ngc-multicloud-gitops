@@ -33,8 +33,6 @@ metadata:
   name: rhbk-sso-dev
   namespace: rhbk-keycloak
 spec:
-  externalAccess:
-     enabled: true
   instance: 3
   db:
     vendor: postgres
