@@ -45,15 +45,8 @@ spec:
       key: password
   http:
     httpEnabled: true
-    httpPort: 8180
   hostname:
     hostname: keycloak.apps.dd-aro.eastus.aroapp.io
     strict: false    
     strictBackchannel: false
     proxy: edge
-  serverConfiguration:
-    - name: hostname-strict-https
-      value: "false"
-    - name: proxy
-      value: edge
-  tlsSecret: INSECURE-DISABLE
