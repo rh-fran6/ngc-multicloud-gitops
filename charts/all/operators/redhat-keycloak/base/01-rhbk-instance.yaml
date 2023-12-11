@@ -50,8 +50,8 @@ spec:
   # additionalOptions:
   #   - name: KC_PROXY
   #     value: passthrough
-  hostname:
-    hostname: keycloak.apps.dd-aro.eastus.aroapp.io
+  # hostname:
+  #   hostname: keycloak.apps.dd-aro.eastus.aroapp.io
   #   strict: false    
   #   strictBackchannel: false
     # proxy: edge
