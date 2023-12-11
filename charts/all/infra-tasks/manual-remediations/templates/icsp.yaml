@@ -1,0 +1,9 @@
+apiVersion: operator.openshift.io/v1alpha1
+kind: ImageContentSourcePolicy
+metadata:
+  name: external-mirrors
+spec:
+  repositoryDigestMirrors:
+    - mirrors:
+        - docker-ng-untrusted-group.northgrum.com/kubebuilder
+      source: gcr.io/kubebuilder

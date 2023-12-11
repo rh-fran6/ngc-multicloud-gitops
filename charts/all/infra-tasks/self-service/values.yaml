@@ -4,9 +4,3 @@
 cluster_name: development-cluster
 
 manual_remediations_enabled: false
-
-mirror_by_tag: true
-
-image_mirrors:
-      - source: gcr.io/kubebuilder
-        mirror: docker-ng-untrusted-group.northgrum.com/kubebuilder
