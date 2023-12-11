@@ -20,11 +20,3 @@ spec:
     tlsSecret: keycloak-tls-cert  
   hostname:
     hostname: keycloak.apps.dd-aro.eastus.aroapp.io
-
-# CERTSECRET=keycloak-cert
-# for i in $(oc get secret  -n openshift-ingress | grep ingress | awk '{print $1}'); oc extract secret/$i -n openshift-ingress
-# oc create secret tls $CERTSECRET --cert tls.crt --key tls.key -n rhbk-sso
-# rm -rf tls.*
-
-# openssl req -subj '/CN=keycloak.apps.dd-aro.eastus.aroapp.io/O=Demo Keycloak./C=US' -newkey rsa:2048 -nodes -keyout key.pem -x509 -days 365 -out certificate.pem
-# kubectl create secret tls keycloak-tls-cert --cert certificate.pem --key key.pem
