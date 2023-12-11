@@ -34,6 +34,8 @@ metadata:
   namespace: rhbk-keycloak
 spec:
   instance: 3
+  ingress:
+      className: openshift-default
   db:
     vendor: postgres
     host: postgres-db.postgresql.svc.cluster.local
@@ -43,13 +45,13 @@ spec:
     passwordSecret:
       name: postgres-db-secret
       key: password
-  http:
-    httpEnabled: true
-  additionalOptions:
-    - name: KC_PROXY
-      value: passthrough
+  # http:
+  #   httpEnabled: true
+  # additionalOptions:
+  #   - name: KC_PROXY
+  #     value: passthrough
   hostname:
-    # hostname: keycloak.apps.dd-aro.eastus.aroapp.io
-    strict: false    
-    strictBackchannel: false
+    hostname: keycloak.apps.dd-aro.eastus.aroapp.io
+  #   strict: false    
+  #   strictBackchannel: false
     # proxy: edge
