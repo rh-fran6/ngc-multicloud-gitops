@@ -1,39 +1,10 @@
-# apiVersion: k8s.keycloak.org/v2alpha1
-# kind: Keycloak
-# metadata:
-#   name: rhbk-sso-prod
-#   namespace: rhbk-sso
-# spec:
-#   instances: 1
-#   ingress:
-#       enabled: false
-#   db:
-#     vendor: postgres
-#     host: postgres-db.postgresql.svc.cluster.local
-#     usernameSecret:
-#       name: postgres-db-secret
-#       key: username
-#     passwordSecret:
-#       name: postgres-db-secret
-#       key: password
-#   http:
-#     # tlsSecret: keycloak-tls-cert  ## Must not be wildcard cert of openshift ingress. 
-#     tlsSecret: keycloak-cert
-#   hostname:
-#     hostname: keycloak.apps.dd-aro.eastus.aroapp.io
-
-# CERTSECRET=keycloak-cert
-# for i in $(oc get secret  -n openshift-ingress | grep ingress | awk '{print $1}'); oc extract secret/$i -n openshift-ingress
-# oc create secret tls $CERTSECRET --cert tls.crt --key tls.key -n rhbk-sso
-# rm -rf tls.*
----
 apiVersion: k8s.keycloak.org/v2alpha1
 kind: Keycloak
 metadata:
-  name: rhbk-sso-dev
-  namespace: rhbk-keycloak
+  name: rhbk-sso-prod
+  namespace: rhbk-sso
 spec:
-  instance: 3
+  instances: 3
   ingress:
       className: openshift-default
   db:
@@ -46,13 +17,14 @@ spec:
       name: postgres-db-secret
       key: password
   http:
-    tlsSecret: example-tls-secret
-  #   httpEnabled: true
-  # additionalOptions:
-  #   - name: KC_PROXY
-  #     value: passthrough
+    tlsSecret: keycloak-tls-cert  
   hostname:
     hostname: keycloak.apps.dd-aro.eastus.aroapp.io
-  #   strict: false    
-  #   strictBackchannel: false
-    # proxy: edge
+
+# CERTSECRET=keycloak-cert
+# for i in $(oc get secret  -n openshift-ingress | grep ingress | awk '{print $1}'); oc extract secret/$i -n openshift-ingress
+# oc create secret tls $CERTSECRET --cert tls.crt --key tls.key -n rhbk-sso
+# rm -rf tls.*
+
+# openssl req -subj '/CN=keycloak.apps.dd-aro.eastus.aroapp.io/O=Demo Keycloak./C=US' -newkey rsa:2048 -nodes -keyout key.pem -x509 -days 365 -out certificate.pem
+# kubectl create secret tls keycloak-tls-cert --cert certificate.pem --key key.pem
