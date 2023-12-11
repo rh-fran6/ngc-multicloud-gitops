@@ -45,7 +45,8 @@ spec:
     passwordSecret:
       name: postgres-db-secret
       key: password
-  # http:
+  http:
+    tlsSecret: example-tls-secret
   #   httpEnabled: true
   # additionalOptions:
   #   - name: KC_PROXY
