@@ -7,4 +7,8 @@ spec:
   storageClassName: azurefile-csi
   accessModes:
     - ReadWriteMany
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 100Gi
 
