@@ -35,3 +35,5 @@ spec:
     replicas: 1
   worker:
     replicas: 2
+  file_storage_storage_class: azurefile-csi
+  route_host: aap-hub.apps.dd-aro.eastus.aroapp.io
