@@ -8,12 +8,6 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   central:
-    db:
-      isEnabled: Default
-      persistence:
-        persistentVolumeClaim:
-          claimName: central-db
-          size: 100Gi
     exposure:
       loadBalancer:
         enabled: false
@@ -22,8 +16,6 @@ spec:
         enabled: false
       route:
         enabled: true
-    notifierSecretsEncryption:
-      enabled: false
     persistence:
       persistentVolumeClaim:
         claimName: stackrox-db
