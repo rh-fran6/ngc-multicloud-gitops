@@ -1,0 +1,7 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: automation-hub-file-storage
+  namespace: ansible-automation-platform
+spec:
+  storageClassName: azurefile-csi
