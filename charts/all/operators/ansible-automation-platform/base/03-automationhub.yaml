@@ -35,6 +35,6 @@ spec:
     replicas: 1
   worker:
     replicas: 2
-  # postgres_storage_class: azurefile-csi 
-  # redis_storage_class: azurefile-csi 
-  # redis_storage_size: azurefile-csi
+  postgres_storage_class: azurefile-csi 
+  redis_storage_class: azurefile-csi 
+  redis_storage_size: azurefile-csi
