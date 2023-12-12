@@ -204,6 +204,12 @@ clusterGroup:
       kustomize: true
       path: charts/all/operators/ansible-automation-platform/overlays/default
 
+    autoscaler:
+      name: clusterautoscaler
+      namespace: openshift-machine-api
+      project: hub
+      path: charts/all/infra-tasks/autoscaler
+
     rhacs:
       name: rhacs-operator
       namespace: rhacs-operator
