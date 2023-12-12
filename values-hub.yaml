@@ -197,15 +197,15 @@ clusterGroup:
           jsonPointers:
             - /spec/loggingCA
 
-    # aap-instance:
-    #   name: ansible-automation-platform
-    #   namespace: aap
-    #   project: hub
-    #   kustomize: true
-    #   path: charts/all/operators/ansible-automation-platform/overlays/default
+    aap-instance:
+      name: ansible-automation-platform
+      namespace: aap
+      project: hub
+      kustomize: true
+      path: charts/all/operators/ansible-automation-platform/overlays/default
 
     autoscaler:
-      name: clusterautoscaler
+      name: cluster-primer
       namespace: openshift-machine-api
       project: hub
       path: charts/all/infra-tasks/autoscaler
