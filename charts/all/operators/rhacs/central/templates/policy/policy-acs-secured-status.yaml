@@ -10,7 +10,7 @@ metadata:
   labels:
     open-cluster-management.io/policy-set: openshift-plus
   name: policy-acs-secured-status
-  namespace: policies
+  # namespace: policies
 spec:
   disabled: false
   policy-templates:
