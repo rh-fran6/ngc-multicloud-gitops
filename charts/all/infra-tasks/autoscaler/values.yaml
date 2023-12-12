@@ -6,10 +6,10 @@ enable_autoscaler: true
 
 max_node_count: 15
 max_aggregate_cpu: 120
-max_aggregate_memory: 384
+max_aggregate_memory: 960
 
 min_aggregate_cpu: 48
-min_aggregate_memory: 960
+min_aggregate_memory: 384
 
 min_replica_per_region: 1
 max_replica_per_region: 3
