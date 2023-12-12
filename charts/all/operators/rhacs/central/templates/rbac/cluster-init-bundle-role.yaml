@@ -16,6 +16,7 @@ rules:
       - create
       - patch
       - update
+      - delete
   - apiGroups:
       - platform.stackrox.io
     resources:
