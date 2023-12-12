@@ -210,12 +210,12 @@ clusterGroup:
       project: hub
       path: charts/all/infra-tasks/autoscaler
 
-    rhacs:
-      name: rhacs-operator
-      namespace: rhacs-operator
-      project: hub
-      kustomize: true
-      path: charts/all/operators/acs/overlays/default
+    # rhacs:
+    #   name: rhacs-operator
+    #   namespace: rhacs-operator
+    #   project: hub
+    #   kustomize: true
+    #   path: charts/all/operators/acs/overlays/default
 
     rhbk-keycloak:
       name: rhbk-keycloak
