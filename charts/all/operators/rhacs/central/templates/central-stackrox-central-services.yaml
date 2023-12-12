@@ -8,6 +8,11 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   central:
+    db:
+      isEnabled: Default
+      persistence:
+        persistentVolumeClaim:
+          size: 100Gi
     exposure:
       loadBalancer:
         enabled: false
