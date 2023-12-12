@@ -32,7 +32,6 @@ spec:
               # Create the secret (modify this line to suit your secret creation)
               oc create secret -n $NAMESPACE generic $SECRET_NAME --from-literal=token=$ACSTOKEN
           fi
-          # oc create secret -n stackrox generic acs-api-token --from-literal=token=$ACSTOKEN
         name: stackrox-api-token
       dnsPolicy: ClusterFirst
       activeDeadlineSeconds: 300
