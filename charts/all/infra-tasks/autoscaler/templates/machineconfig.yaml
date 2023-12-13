@@ -1,3 +1,4 @@
+---
 {{- if .Values.enable_autoscaler }}
 {{- range .Values.name }}
 apiVersion: "autoscaling.openshift.io/v1beta1"
@@ -12,5 +13,7 @@ spec:
     apiVersion: machine.openshift.io/v1beta1
     kind: MachineSet 
     name: {{ .name }}
+
+---
 {{- end }}
 {{- end}}
