@@ -34,7 +34,7 @@ spec:
                 attempt_counter=0
                 max_attempts=20
                 echo "Waiting for central to be available..."
-                until $(curl -k --output /dev/null --silent --head --fail https://central); do
+                until $(curl -k --output /dev/null --silent --head --fail https://central-stackrox.{{ .Values.global.hubClusterDomain }}); do
                     if [ ${attempt_counter} -eq ${max_attempts} ];then
                       echo "Max attempts reached"
                       exit 1
@@ -47,7 +47,7 @@ spec:
 
                 echo "Configuring cluster-init bundle"
                 export DATA={\"name\":\"local-cluster\"}
-                curl -k -o /tmp/bundle.json -X POST -u "admin:$PASSWORD" -H "Content-Type: application/json" --data $DATA https://central/v1/cluster-init/init-bundles
+                curl -k -o /tmp/bundle.json -X POST -u "admin:$PASSWORD" -H "Content-Type: application/json" --data $DATA https://central-stackrox.{{ .Values.global.hubClusterDomain }}/v1/cluster-init/init-bundles
 
                 echo "Bundle received"
                 cat /tmp/bundle.json
