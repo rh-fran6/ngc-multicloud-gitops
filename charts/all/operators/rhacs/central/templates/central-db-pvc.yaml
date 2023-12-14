@@ -1,0 +1,17 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: central-db
+  namespace: stackrox
+  labels:
+    target.pvc.stackrox.io: central-db
+  finalizers:
+    - kubernetes.io/pvc-protection
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: azurefile-csi
+  volumeMode: Filesystem
