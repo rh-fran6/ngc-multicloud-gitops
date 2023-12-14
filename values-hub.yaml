@@ -210,11 +210,11 @@ clusterGroup:
       project: hub
       path: charts/all/infra-tasks/autoscaler
 
-    rhacs:
-      name: rhacs-operator
-      namespace: rhacs-operator
-      project: hub
-      path: charts/all/operators/rhacs/central
+    # rhacs:
+    #   name: rhacs-operator
+    #   namespace: rhacs-operator
+    #   project: hub
+    #   path: charts/all/operators/rhacs/central
 
     rhbk-keycloak:
       name: rhbk-keycloak
