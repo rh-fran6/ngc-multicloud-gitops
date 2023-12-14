@@ -33,10 +33,10 @@ clusterGroup:
     - istio-system:
         operatorGroup: false
 
-    - rhacs-operator:
-        operatorGroup: true
-        annotations:
-          openshift.io/display-name: Red Hat Advanced Cluster Security Operator
+    # - rhacs-operator:
+    #     operatorGroup: true
+    #     annotations:
+    #       openshift.io/display-name: Red Hat Advanced Cluster Security Operator
 
     - openshift-operators-redhat:
         operatorGroup: true
@@ -111,9 +111,9 @@ clusterGroup:
       namespace: ansible-automation-platform
       channel: stable-2.4-cluster-scoped
 
-    rhacs-operator:
-      name: rhacs-operator
-      channel: stable
+    # rhacs-operator:
+    #   name: rhacs-operator
+    #   channel: stable
 
     ekho-external-secrets:
       name: external-secrets-operator
@@ -210,11 +210,11 @@ clusterGroup:
       project: hub
       path: charts/all/infra-tasks/autoscaler
 
-    rhacs:
-      name: rhacs-operator
-      namespace: rhacs-operator
-      project: hub
-      path: charts/all/operators/rhacs/central
+    # rhacs:
+    #   name: rhacs-operator
+    #   namespace: rhacs-operator
+    #   project: hub
+    #   path: charts/all/operators/rhacs/central
 
     rhbk-keycloak:
       name: rhbk-keycloak
