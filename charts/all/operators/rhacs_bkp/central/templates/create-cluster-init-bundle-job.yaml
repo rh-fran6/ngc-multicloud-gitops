@@ -1,12 +1,16 @@
-{{ if .Values.acs.central_cluster }}
 apiVersion: batch/v1
 kind: Job
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "5"
   name: create-cluster-init-bundle
+  namespace: stackrox
 spec:
   template:
+    metadata:
+      annotations:
+        argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     spec:
       containers:
         - image: image-registry.openshift-image-registry.svc:5000/openshift/cli:latest
@@ -30,7 +34,7 @@ spec:
                 attempt_counter=0
                 max_attempts=20
                 echo "Waiting for central to be available..."
-                until $(curl -k --output /dev/null --silent --head --fail https://central); do
+                until $(curl -k --output /dev/null --silent --head --fail https://central-stackrox.{{ .Values.global.hubClusterDomain }}); do
                     if [ ${attempt_counter} -eq ${max_attempts} ];then
                       echo "Max attempts reached"
                       exit 1
@@ -39,12 +43,11 @@ spec:
                     printf '.'
                     attempt_counter=$(($attempt_counter+1))
                     echo "Made attempt $attempt_counter, waiting..."
-                    sleep 5
                 done
 
                 echo "Configuring cluster-init bundle"
                 export DATA={\"name\":\"local-cluster\"}
-                curl -k -o /tmp/bundle.json -X POST -u "admin:$PASSWORD" -H "Content-Type: application/json" --data $DATA https://central/v1/cluster-init/init-bundles
+                curl -k -o /tmp/bundle.json -X POST -u "admin:$PASSWORD" -H "Content-Type: application/json" --data $DATA https://central-stackrox.{{ .Values.global.hubClusterDomain }}/v1/cluster-init/init-bundles
 
                 echo "Bundle received"
                 cat /tmp/bundle.json
@@ -64,4 +67,3 @@ spec:
       serviceAccount: create-cluster-init
       serviceAccountName: create-cluster-init
       terminationGracePeriodSeconds: 30
-{{ end }}

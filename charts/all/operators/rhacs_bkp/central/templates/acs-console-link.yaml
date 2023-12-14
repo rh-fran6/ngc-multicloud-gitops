@@ -1,4 +1,3 @@
-{{ if .Values.acs.central_cluster }}
 apiVersion: console.openshift.io/v1
 kind: ConsoleLink
 metadata:
@@ -11,4 +10,3 @@ spec:
   href: 'https://central-stackrox.{{ .Values.global.hubClusterDomain }}'
   location: ApplicationMenu
   text: 'RHACS'
-{{ end }}

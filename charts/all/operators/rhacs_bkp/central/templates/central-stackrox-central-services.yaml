@@ -1,13 +1,18 @@
 ﻿{{ if .Values.acs.central_cluster }}
-# Note this is resource reduced, this should not be taken as a production ready installation
 apiVersion: platform.stackrox.io/v1alpha1
 kind: Central
 metadata:
+  name: stackrox-central-services
+  namespace: stackrox
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
-  name: central
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   central:
+    db:
+      isEnabled: Default
+      persistence:
+        persistentVolumeClaim:
+          size: 100Gi
     exposure:
       loadBalancer:
         enabled: false
@@ -19,14 +24,19 @@ spec:
     persistence:
       persistentVolumeClaim:
         claimName: stackrox-db
+    telemetry:
+      enabled: true
   egress:
     connectivityPolicy: Online
+  monitoring:
+    openshift:
+      enabled: true
   scanner:
     analyzer:
       scaling:
         autoScaling: Enabled
         maxReplicas: 5
         minReplicas: 2
-        replicas: 2
+        replicas: 3
     scannerComponent: Enabled
 {{ end }}
