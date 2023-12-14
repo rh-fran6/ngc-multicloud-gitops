@@ -6,6 +6,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "1"
   name: central
+  namespace: stackrox
 spec:
   central:
     exposure:
