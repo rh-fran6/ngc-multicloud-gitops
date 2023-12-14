@@ -14,7 +14,7 @@ spec:
       persistence:
         persistentVolumeClaim:
           claimName: central-db
-          storageClass: {{ .Values.central_db.storage_class }}
+          storageClassName: {{ .Values.central_db.storage_class }}
     exposure:
       loadBalancer:
         enabled: false
