@@ -5,3 +5,4 @@ resources:
   - 01-rhbk-instance.yaml
   - 02-rhbk-secret.yaml
   - 03-rhbk-console-link.yaml
+  - 04-rhbk-secret.yaml
