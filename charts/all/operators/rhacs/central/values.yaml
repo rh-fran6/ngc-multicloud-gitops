@@ -13,4 +13,5 @@ clusterGroup:
   name: local-cluster
 
 central_db:
-  storage_class: azurefile-csi
+  storage_class: managed-csi
+  name: central_db_pvc
