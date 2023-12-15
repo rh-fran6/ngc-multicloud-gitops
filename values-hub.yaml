@@ -211,19 +211,19 @@ clusterGroup:
       path: charts/all/infra-tasks/autoscaler
 
     rhacs:
-      name: rhacs-operator
+      name: rhacs-server-side-config
       namespace: rhacs-operator
       project: hub
       path: charts/all/operators/rhacs/central
 
     secured-cluster:
-      name: rhacs-operator
+      name: rhacs-secured-clusters
       namespace: rhacs-operator
       project: hub
       path: charts/all/operators/rhacs/secured
 
     rhbk-keycloak:
-      name: rhacs-secured-clusters
+      name: rhbk-keycloak
       namespace: rhbk-keycloak
       project: hub
       kustomize: true
