@@ -223,7 +223,7 @@ clusterGroup:
       path: charts/all/operators/rhacs/secured
 
     rhbk-keycloak:
-      name: rhbk-keycloak
+      name: rhacs-secured-clusters
       namespace: rhbk-keycloak
       project: hub
       kustomize: true
