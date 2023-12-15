@@ -10,7 +10,7 @@ metadata:
   labels:
     open-cluster-management.io/policy-set: openshift-plus
   name: policy-acs-central-status
-  namespace: policies
+  namespace: stackrox
 spec:
   disabled: false
   policy-templates:
