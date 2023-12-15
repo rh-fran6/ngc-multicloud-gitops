@@ -216,6 +216,12 @@ clusterGroup:
       project: hub
       path: charts/all/operators/rhacs/central
 
+    secured-cluster:
+      name: rhacs-operator
+      namespace: rhacs-operator
+      project: hub
+      path: charts/all/operators/rhacs/secured
+
     rhbk-keycloak:
       name: rhbk-keycloak
       namespace: rhbk-keycloak
