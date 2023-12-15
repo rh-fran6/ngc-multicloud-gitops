@@ -1,16 +1,13 @@
+{{ if .Values.acs.central_cluster }}
 apiVersion: batch/v1
 kind: Job
 metadata:
   annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-wave: "2"
   name: create-cluster-init-bundle
   namespace: stackrox
 spec:
   template:
-    metadata:
-      annotations:
-        argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     spec:
       containers:
         - image: image-registry.openshift-image-registry.svc:5000/openshift/cli:latest
@@ -43,6 +40,7 @@ spec:
                     printf '.'
                     attempt_counter=$(($attempt_counter+1))
                     echo "Made attempt $attempt_counter, waiting..."
+                    sleep 5
                 done
 
                 echo "Configuring cluster-init bundle"
@@ -67,3 +65,4 @@ spec:
       serviceAccount: create-cluster-init
       serviceAccountName: create-cluster-init
       terminationGracePeriodSeconds: 30
+{{ end }}
