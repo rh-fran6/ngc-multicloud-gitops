@@ -4,3 +4,5 @@ kind: Kustomization
 
 resources:
   - ../../base
+  - akv-integration-sa.yaml
+  - akv-secretstore.yaml
