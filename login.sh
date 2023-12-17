@@ -9,3 +9,8 @@ password=$(echo $val | jq -r ".kubeadminPassword")
 
 echo oc login -u $username -p $password $api > /opt/homebrew/bin/aro-login
 chmod +x /opt/homebrew/bin/aro-login
+
+
+
+
+
