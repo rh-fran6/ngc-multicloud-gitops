@@ -229,12 +229,12 @@ clusterGroup:
       kustomize: true
       path: charts/all/operators/redhat-keycloak/overlays/default
 
-    ekho-external-secrets:
-      name: exho-external-secrets
-      namespace: ekho-external-secrets
-      project: hub
-      kustomize: true
-      path: charts/all/operators/ekho-external-secrets/overlays/default
+    # ekho-external-secrets:
+    #   name: exho-external-secrets
+    #   namespace: ekho-external-secrets
+    #   project: hub
+    #   kustomize: true
+    #   path: charts/all/operators/ekho-external-secrets/overlays/default
 
     hello-world:
       name: hello-world
