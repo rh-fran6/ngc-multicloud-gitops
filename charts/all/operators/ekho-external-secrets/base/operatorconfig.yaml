@@ -3,6 +3,8 @@ kind: OperatorConfig
 metadata:
   name: cluster
   namespace: ekho-external-secrets
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   prometheus:
     enabled: true
