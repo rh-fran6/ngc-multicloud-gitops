@@ -21,6 +21,6 @@ spec:
     httpEnabled: true
   hostname:
     hostname: keycloak.apps.dd-aro.eastus.aroapp.io
-    adminurl: https://sso.apps.dd-aro.eastus.aroapp.io
+    adminurl: https://keycloak.apps.dd-aro.eastus.aroapp.io
     strict: false
     strictBackchannel: false
