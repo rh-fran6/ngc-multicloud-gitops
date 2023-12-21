@@ -19,7 +19,6 @@ spec:
       name: rhbk-secret-from-akv
       key: psqlpw
   http:
-    # tlsSecret: keycloak-tls-cert  
     tlsSecret: keycloak-cert-secret
     # httpEnabled: true
   hostname:

@@ -3,7 +3,7 @@ kind: Kustomization
 
 resources:
   - ../../base
-  - ca-issuer.yaml
-  - certificate.yaml
-  - keycloak-cert.yaml
+  - 01-rhbk-certificate.yaml
+  - 02-rhbk-ca-issuer.yaml
+  - 03-rhbk-keycloak-cert.yaml
 

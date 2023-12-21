@@ -3,7 +3,7 @@ kind: Kustomization
 
 resources:
   - 01-rhbk-instance.yaml
-  - 02-rhbk-secret.yaml
+  - 02-rhbk-external-secret.yaml
   - 03-rhbk-console-link.yaml
-  - 04-rhbk-secret.yaml
-  - 05-rhbk-tls-cert.yaml
+  # - 04-rhbk-secret.yaml
+  # - 05-rhbk-tls-cert.yaml
