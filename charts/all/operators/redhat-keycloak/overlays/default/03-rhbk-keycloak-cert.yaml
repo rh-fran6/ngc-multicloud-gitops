@@ -4,7 +4,7 @@ metadata:
   name: keycloak-cert
   namespace: rhbk-keycloak
   annotations:
-    argocd.argoproj.io/sync-wave: "3"
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   secretName: keycloak-cert-secret
   isCA: false
