@@ -17,10 +17,10 @@ spec:
       name: postgres-db-secret
       key: password
   http:
-    # tlsSecret: keycloak-tls-cert  
-    httpEnabled: true
+    tlsSecret: keycloak-tls-cert  
+    # httpEnabled: true
   hostname:
     hostname: keycloak.apps.dd-aro.eastus.aroapp.io
-    adminurl: https://keycloak.apps.dd-aro.eastus.aroapp.io
-    strict: false
-    strictBackchannel: false
+    # adminurl: https://keycloak.apps.dd-aro.eastus.aroapp.io
+    # strict: false
+    # strictBackchannel: false
