@@ -9,3 +9,4 @@ super-linter.log
 common/pattern-vault.init
 common/tests/*
 charts/all/operators/redhat-keycloak/images/*
+charts/all/operators/ekho-external-secrets/overlays/default/akv-integration-sa.yaml
