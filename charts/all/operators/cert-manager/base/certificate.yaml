@@ -11,7 +11,12 @@ spec:
   privateKey:
     algorithm: ECDSA
     size: 256
+  subject:
+    organizations:
+      - Red Hat Demo Lab
+    organizationalUnits:
+      - NGC Demo
   issuerRef:
-    name: selfsigned-issuer
+    name: cert-manager-ca-cluster-issuer
     kind: ClusterIssuer
     group: cert-manager.io
