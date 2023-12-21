@@ -7,3 +7,4 @@ resources:
   - akv-integration-sa.yaml
   - akv-secretstore-sp.yaml
   - akv-externalsecret-read.yaml
+  - akv-clustersecretstore.yaml

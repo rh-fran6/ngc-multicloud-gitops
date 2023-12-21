@@ -1,7 +1,7 @@
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: postgres-secret-from-akv
+  name: tls-cert-test
   namespace: rhbk-keycloak
   annotations:
     argocd.argoproj.io/sync-wave: "4"
@@ -11,11 +11,8 @@ spec:
     kind: ClusterSecretStore
     name: akv-cluster-secret
   target:
-    name: rhbk-secret-from-akv
+    name: rhbk-tls-cert
   data:
-  - secretKey: psqluser
+  - secretKey: tlscert
     remoteRef:
-      key: secret/psqluname
-  - secretKey: psqlpw
-    remoteRef:
-      key: secret/psqlpassword
+      key: cert/keycloakcert

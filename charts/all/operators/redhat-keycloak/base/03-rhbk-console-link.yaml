@@ -2,6 +2,8 @@ apiVersion: console.openshift.io/v1
 kind: ConsoleLink
 metadata:
   name: rhbk-sso-dev
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   applicationMenu:
     section: Red Hat applications

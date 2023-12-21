@@ -3,6 +3,8 @@ kind: Keycloak
 metadata:
   name: rhbk-sso-prod
   namespace: rhbk-keycloak
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   instances: 3
   ingress:
