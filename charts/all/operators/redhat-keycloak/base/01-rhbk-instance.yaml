@@ -11,11 +11,11 @@ spec:
     vendor: postgres
     host: postgres-db.postgresql.svc.cluster.local
     usernameSecret:
-      name: postgres-db-secret
-      key: username
+      name: rhbk-secret-from-akv
+      key: psqluser
     passwordSecret:
-      name: postgres-db-secret
-      key: password
+      name: rhbk-secret-from-akv
+      key: psqlpw
   http:
     tlsSecret: keycloak-tls-cert  
     # httpEnabled: true

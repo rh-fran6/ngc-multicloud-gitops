@@ -21,10 +21,6 @@ spec:
             - mountPath: /data
               name: cache-volume
           env:
-            # - name: POSTGRES_USER
-            #   value: postgresql
-            # - name: POSTGRES_PASSWORD
-            #   value: postgresql
             - name: PGDATA
               value: /data/pgdata
 
