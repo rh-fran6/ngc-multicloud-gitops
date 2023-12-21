@@ -3,4 +3,7 @@ kind: Kustomization
 
 resources:
   - ../../base
+  - ca-issuer.yaml
+  - certificate.yaml
+  - keycloak-cert.yaml
 

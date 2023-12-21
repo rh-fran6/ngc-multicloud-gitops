@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: keycloak-cert
+  namespace: rhbk-keycloak
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+spec:
+  secretName: keycloak-cert-secret
+  isCA: false
+  usages:
+    - server auth
+    - client auth
+  dnsNames:
+  - "keycloak.apps.dd-aro.eastus.aroapp.io"
+  issuerRef:
+    name: cert-ca-issuer
