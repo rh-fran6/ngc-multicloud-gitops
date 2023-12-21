@@ -277,6 +277,13 @@ clusterGroup:
       kustomize: true
       path: charts/all/operators/openshift-servicemesh/instance/overlays/default
 
+    cert-manager:
+      name: cert-manager
+      namespace: cert-maanger
+      project: hub
+      kustomize: true
+      path: charts/all/operators/cert-manager/overlays/default
+
     postgresql:
       name: postgresql
       namespace: postgresql
