@@ -27,7 +27,7 @@ spec:
             #   value: postgresql
             - name: PGDATA
               value: /data/pgdata
-              
+
             - name: POSTGRES_DB
               value: keycloak
 
@@ -35,13 +35,13 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: postgres-secret-from-akv
-                  key: psqluname
+                  key: psqluser
 
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: postgres-secret-from-akv
-                  key: psqlpassword
+                  key: psqlpw
       volumes:
         - name: cache-volume
           emptyDir: {}
