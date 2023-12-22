@@ -1,0 +1,273 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    meta.helm.sh/release-name: cluster
+    meta.helm.sh/release-namespace: ekho-external-secrets
+  ownerReferences:
+  - apiVersion: operator.external-secrets.io/v1alpha1
+    blockOwnerDeletion: true
+    controller: true
+    kind: OperatorConfig
+    name: cluster
+  labels:
+    app.kubernetes.io/instance: cluster
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: external-secrets
+    app.kubernetes.io/version: v0.9.10
+    helm.sdk.operatorframework.io/chart: external-secrets
+    helm.sh/chart: external-secrets-0.9.10
+  name: cluster-external-secrets
+  namespace: ekho-external-secrets
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: cluster
+      app.kubernetes.io/name: external-secrets
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: cluster
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/name: external-secrets
+        app.kubernetes.io/version: v0.9.10
+        helm.sh/chart: external-secrets-0.9.10
+    spec:
+      automountServiceAccountToken: true
+      containers:
+      - args:
+        - --concurrent=1
+        - --metrics-addr=:8080
+        # image: ghcr.io/external-secrets/external-secrets:v0.9.10
+        image: {{ .Values.image.external-secrets }}
+        imagePullPolicy: IfNotPresent
+        name: external-secrets
+        ports:
+        - containerPort: 8080
+          name: metrics
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          requests:
+            cpu: 10m
+            memory: 96Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: cluster-external-secrets
+      serviceAccountName: cluster-external-secrets
+      terminationGracePeriodSeconds: 30
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    meta.helm.sh/release-name: cluster
+    meta.helm.sh/release-namespace: ekho-external-secrets
+  generation: 1
+  labels:
+    app.kubernetes.io/instance: cluster
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: external-secrets-cert-controller
+    app.kubernetes.io/version: v0.9.10
+    helm.sdk.operatorframework.io/chart: external-secrets
+    helm.sh/chart: external-secrets-0.9.10
+  name: cluster-external-secrets-cert-controller
+  namespace: ekho-external-secrets
+  ownerReferences:
+  - apiVersion: operator.external-secrets.io/v1alpha1
+    blockOwnerDeletion: true
+    controller: true
+    kind: OperatorConfig
+    name: cluster
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: cluster
+      app.kubernetes.io/name: external-secrets-cert-controller
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/instance: cluster
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/name: external-secrets-cert-controller
+        app.kubernetes.io/version: v0.9.10
+        helm.sh/chart: external-secrets-0.9.10
+    spec:
+      automountServiceAccountToken: true
+      containers:
+      - args:
+        - certcontroller
+        - --crd-requeue-interval=5m
+        - --service-name=cluster-external-secrets-webhook
+        - --service-namespace=ekho-external-secrets
+        - --secret-name=cluster-external-secrets-webhook
+        - --secret-namespace=ekho-external-secrets
+        - --metrics-addr=:8080
+        - --healthz-addr=:8081
+        # image: ghcr.io/external-secrets/external-secrets:v0.9.10
+        image: {{ .Values.image.external-secrets }}
+        imagePullPolicy: IfNotPresent
+        name: cert-controller
+        ports:
+        - containerPort: 8080
+          name: metrics
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /readyz
+            port: 8081
+            scheme: HTTP
+          initialDelaySeconds: 20
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: external-secrets-cert-controller
+      serviceAccountName: external-secrets-cert-controller
+      terminationGracePeriodSeconds: 30
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    meta.helm.sh/release-name: cluster
+    meta.helm.sh/release-namespace: ekho-external-secrets
+  generation: 1
+  labels:
+    app.kubernetes.io/instance: cluster
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: external-secrets-webhook
+    app.kubernetes.io/version: v0.9.10
+    helm.sdk.operatorframework.io/chart: external-secrets
+    helm.sh/chart: external-secrets-0.9.10
+  name: cluster-external-secrets-webhook
+  namespace: ekho-external-secrets
+  ownerReferences:
+  - apiVersion: operator.external-secrets.io/v1alpha1
+    blockOwnerDeletion: true
+    controller: true
+    kind: OperatorConfig
+    name: cluster
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: cluster
+      app.kubernetes.io/name: external-secrets-webhook
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/instance: cluster
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/name: external-secrets-webhook
+        app.kubernetes.io/version: v0.9.10
+        helm.sh/chart: external-secrets-0.9.10
+    spec:
+      automountServiceAccountToken: true
+      containers:
+      - args:
+        - webhook
+        - --port=10250
+        - --dns-name=cluster-external-secrets-webhook.ekho-external-secrets.svc
+        - --cert-dir=/tmp/certs
+        - --check-interval=5m
+        - --metrics-addr=:8080
+        - --healthz-addr=:8081
+        # image: ghcr.io/external-secrets/external-secrets:v0.9.10
+        image: {{ .Values.image.external-secrets }}
+        imagePullPolicy: IfNotPresent
+        name: webhook
+        ports:
+        - containerPort: 8080
+          name: metrics
+          protocol: TCP
+        - containerPort: 10250
+          name: webhook
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /readyz
+            port: 8081
+            scheme: HTTP
+          initialDelaySeconds: 20
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /tmp/certs
+          name: certs
+          readOnly: true
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: external-secrets-webhook
+      serviceAccountName: external-secrets-webhook
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: certs
+        secret:
+          defaultMode: 420
+          secretName: cluster-external-secrets-webhook

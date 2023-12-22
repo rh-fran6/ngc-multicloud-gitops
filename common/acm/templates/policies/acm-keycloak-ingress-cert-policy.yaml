@@ -1,74 +1,74 @@
-# This pushes out the HUB's Certificate Authorities on to the imported clusters
-{{ if .Values.clusterGroup.isHubCluster }}
----
-apiVersion: policy.open-cluster-management.io/v1
-kind: Policy
-metadata:
-  name: acm-keycloak-ingress-certificate
-  namespace: openshift-ingress
-  annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
-spec:
-  remediationAction: enforce
-  disabled: false
-  policy-templates:
-    - objectDefinition:
-        apiVersion: policy.open-cluster-management.io/v1
-        kind: ConfigurationPolicy
-        metadata:
-          name: acm-keycloak-ingress-cert
-        spec:
-          remediationAction: musthave
-          severity: medium
-          namespaceSelector:
-            include:
-              - openshift-ingress
-          object-templates:
-            - complianceType: musthave
-              objectDefinition:
-                kind: Secret
-                apiVersion: v1
-                type: kubernetes.io/tls
-                metadata:
-                  name: keycloak-cert
-                  namespace: rhbk-sso
-                data:
-                  tls.crt: '{{ `{{hub fromSecret "" "1c736b15-173e-44fb-b22c-01fa6005a471-ingress" "tls.crt" hub}}` }}'
-                  tls.key: '{{ `{{hub fromSecret "" "1c736b15-173e-44fb-b22c-01fa6005a471-ingress" "tls.key" hub}}` }}'
---- 
-apiVersion: policy.open-cluster-management.io/v1
-kind: PlacementBinding
-metadata:
-  name: acm-keycloak-ingress-policy-placement-binding
-  namespace: openshift-ingress
-  annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-placementRef:
-  name: acm-keycloak-ingress-policy-placement
-  kind: PlacementRule
-  apiGroup: apps.open-cluster-management.io
-subjects:
-  - name: acm-keycloak-ingress-certificate
-    kind: Policy
-    apiGroup: policy.open-cluster-management.io
----
-apiVersion: apps.open-cluster-management.io/v1
-kind: PlacementRule
-metadata:
-  name: acm-keycloak-ingress-policy-placement
-  namespace: openshift-ingress
-  annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-spec:
-  clusterConditions:
-    - status: 'True'
-      type: ManagedClusterConditionAvailable
-  clusterSelector:
-    matchExpressions:
-      - key: local-cluster
-        operator: In
-        values:
-          - 'true'
-{{ end }}
+# # This pushes out the HUB's Certificate Authorities on to the imported clusters
+# {{ if .Values.clusterGroup.isHubCluster }}
+# ---
+# apiVersion: policy.open-cluster-management.io/v1
+# kind: Policy
+# metadata:
+#   name: acm-keycloak-ingress-certificate
+#   namespace: openshift-ingress
+#   annotations:
+#     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+#     argocd.argoproj.io/compare-options: IgnoreExtraneous
+# spec:
+#   remediationAction: enforce
+#   disabled: false
+#   policy-templates:
+#     - objectDefinition:
+#         apiVersion: policy.open-cluster-management.io/v1
+#         kind: ConfigurationPolicy
+#         metadata:
+#           name: acm-keycloak-ingress-cert
+#         spec:
+#           remediationAction: musthave
+#           severity: medium
+#           namespaceSelector:
+#             include:
+#               - openshift-ingress
+#           object-templates:
+#             - complianceType: musthave
+#               objectDefinition:
+#                 kind: Secret
+#                 apiVersion: v1
+#                 type: kubernetes.io/tls
+#                 metadata:
+#                   name: keycloak-cert
+#                   namespace: rhbk-sso
+#                 data:
+#                   tls.crt: '{{ `{{hub fromSecret "" "1c736b15-173e-44fb-b22c-01fa6005a471-ingress" "tls.crt" hub}}` }}'
+#                   tls.key: '{{ `{{hub fromSecret "" "1c736b15-173e-44fb-b22c-01fa6005a471-ingress" "tls.key" hub}}` }}'
+# --- 
+# apiVersion: policy.open-cluster-management.io/v1
+# kind: PlacementBinding
+# metadata:
+#   name: acm-keycloak-ingress-policy-placement-binding
+#   namespace: openshift-ingress
+#   annotations:
+#     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+# placementRef:
+#   name: acm-keycloak-ingress-policy-placement
+#   kind: PlacementRule
+#   apiGroup: apps.open-cluster-management.io
+# subjects:
+#   - name: acm-keycloak-ingress-certificate
+#     kind: Policy
+#     apiGroup: policy.open-cluster-management.io
+# ---
+# apiVersion: apps.open-cluster-management.io/v1
+# kind: PlacementRule
+# metadata:
+#   name: acm-keycloak-ingress-policy-placement
+#   namespace: openshift-ingress
+#   annotations:
+#     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+# spec:
+#   clusterConditions:
+#     - status: 'True'
+#       type: ManagedClusterConditionAvailable
+#   clusterSelector:
+#     matchExpressions:
+#       - key: local-cluster
+#         operator: In
+#         values:
+#           - 'true'
+# {{ end }}
 
