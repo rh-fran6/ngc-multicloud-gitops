@@ -7,8 +7,8 @@ metadata:
     argocd.argoproj.io/sync-wave: "2"
 type: Opaque
 data:
-  ClientID: MDRkN2NiMDItODE4Ny00YzI3LWFjMmUtMTE3ZGEzMmIzNjg3Cg==  #service-principal-ID
-  ClientSecret: dTExOFF+eXUwb1FCMmVfV2hReER4MnhXb19zS1VIUzEzMmhrX2FldQo= #service-principal-secret
+  ClientID: ZmZjOWM1MDgtNDgyZi00MjI2LWE1N2MtODA0MmM5ZWUwNzcxCg==  #service-principal-ID
+  ClientSecret: OWM5OFF+Q0w4cmJEWHZTcU1DakdPOXlvTEs2cEF1aDg0TzZZaWFTLgo= #service-principal-secret
 
 ---
 ## Push SP ##
@@ -20,5 +20,5 @@ metadata:
     argocd.argoproj.io/sync-wave: "2"
 type: Opaque
 data:
-  ClientID: ZmZjOWM1MDgtNDgyZi00MjI2LWE1N2MtODA0MmM5ZWUwNzcxCg==  #service-principal-ID
-  ClientSecret: OWM5OFF+Q0w4cmJEWHZTcU1DakdPOXlvTEs2cEF1aDg0TzZZaWFTLgo= #service-principal-secret
+  ClientID: MDRkN2NiMDItODE4Ny00YzI3LWFjMmUtMTE3ZGEzMmIzNjg3Cg==  #service-principal-ID
+  ClientSecret: UW4uOFF+alF2elpiNVVWa1hpcUhBdDJXVWpLWjFkazF0Ni5ZTWFoRAo= #service-principal-secret
