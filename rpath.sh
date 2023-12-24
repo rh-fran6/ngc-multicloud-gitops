@@ -116,16 +116,13 @@ cat <<EOF | oc apply -f -
 apiVersion: gitops.hybrid-cloud-patterns.io/v1alpha1
 kind: Pattern
 metadata:
-  name: ngc-hub
+  name: ngc
   namespace: openshift-operators
 spec:
   clusterGroupName: hub
   gitSpec:
     targetRepo: https://github.com/rh-fran6/ngc-multicloud-gitops.git
     targetRevision: main
-  gitOpsSpec:
-    operatorChannel: gitops-1.9
-    operatorSource: redhat-operators
   multiSourceConfig:
     enabled: false
 EOF
