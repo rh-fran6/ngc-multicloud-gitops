@@ -1,0 +1,32 @@
+spec:
+  install:
+    spec:      
+      deployments:
+      - name: patterns-operator-controller-manager
+      
+        spec:
+          selector:
+            matchLabels:
+              control-plane: controller-manager
+          template:
+            spec:
+              containers:
+
+              - name: kube-rbac-proxy
+                volumeMounts:
+                  - name:  ca-inject-1
+                    # mountPath:  /etc/pki/ca-trust/extracted/pem       
+                    mountPath: /tmp/test     
+
+              - name: manager
+                volumeMounts:
+                  - name:  ca-inject-1
+                    # mountPath:  /etc/pki/ca-trust/extracted/pem
+                    mountPath: /tmp/test  
+
+              volumes:
+              - configMap:
+                   name: ca-inject-1
+                name: ca-bundle.crt-1
+
+# oc patch csv/patterns-operator.v0.0.37 --patch "$(cat rpatch.yaml)"
