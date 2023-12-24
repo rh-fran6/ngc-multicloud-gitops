@@ -6,5 +6,5 @@ metadata:
     argocd.argoproj.io/sync-wave: "2"
 type: Opaque
 data:
-  ClientID: YmNiNWY1NTItZmZkNS00ODM1LThhNWUtMDM3MTU0ZTEyYmYwCg==  #service-principal-ID
-  ClientSecret: Zk9iOFF+X1BkY3MtVGIwdlNMa2N1WWxFQ2RiMG5ibEVXcU1qeGJiOQo= #service-principal-secret
+  ClientID: NTJiNGYxYTQtOWNhYi00N2U1LWI0MjEtYTg3ODNkZDIzODA3Cg==  #service-principal-ID
+  ClientSecret: dTExOFF+eXUwb1FCMmVfV2hReER4MnhXb19zS1VIUzEzMmhrX2FldQo= #service-principal-secret
