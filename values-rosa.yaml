@@ -5,7 +5,7 @@ global:
     installPlanApproval: Automatic
 
 clusterGroup:
-  name: group-one
+  name: rosa
   isHubCluster: false
 
   namespaces:
@@ -22,11 +22,12 @@ clusterGroup:
 
   applications:
     
-    external-secrets-operator:
-      name: external-secrets-operator
-      namespace: external-secrets-operator
-      project: eso
-      path: common/external-secrets-operator
+    ekho-external-secrets:
+      name: exho-external-secrets
+      namespace: ekho-external-secrets
+      project: hub
+      kustomize: true
+      path: charts/all/operators/ekho-external-secrets/overlays/default
 
     hello-world:
       name: hello-world
@@ -34,14 +35,15 @@ clusterGroup:
       project: hello-world
       path: charts/all/hello-world
 
-    # postgresql:
-    #   name: postgresql
-    #   namespace: postgresql
-    #   project: postgresql
-    #   path: charts/all/postgresql
+    postgresql:
+      name: postgresql
+      namespace: postgresql
+      project: postgresql
+      path: charts/all/apps/postgresql
       
 
   imperative:
+    unseal: false
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
     # The default schedule is every 10 minutes: imperative.schedule
     # Total timeout of all jobs is 1h: imperative.activeDeadlineSeconds

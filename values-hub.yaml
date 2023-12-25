@@ -305,10 +305,10 @@ clusterGroup:
 
   managedClusterGroups:
     exampleRegion:
-      name: group-one
+      name: rosa
       acmlabels:
         - name: clusterGroup
-          value: group-one
+          value: rosa
       helmOverrides:
         - name: clusterGroup.isHubCluster
           value: false
