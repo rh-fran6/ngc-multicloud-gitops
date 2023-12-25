@@ -75,7 +75,7 @@ spec:
       - key: vendor
         operator: In
         values:
-          - OpenShift1
+          - OpenShift
 #       - key: local-cluster
 #         operator: NotIn
 #         values:
