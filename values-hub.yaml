@@ -303,15 +303,15 @@ clusterGroup:
         timeout: 234
         # verbosity: "-v"
 
-  managedClusterGroups:
-    ngc-rosa-clusters:
-      name: spoke-dev
-      acmlabels:
-        - name: cluster
-          value: dev
-      helmOverrides:
-        - name: clusterGroup.isHubCluster
-          value: false
+  # managedClusterGroups:
+  #   ngc-rosa-clusters:
+  #     name: spoke-dev
+  #     acmlabels:
+  #       - name: cluster
+  #         value: dev
+  #     helmOverrides:
+  #       - name: clusterGroup.isHubCluster
+  #         value: false
 
       # Before enabling cluster provisioning, ensure AWS and/or Azure
       #   credentials and OCP pull secrets are defined in Vault.
