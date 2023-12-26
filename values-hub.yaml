@@ -30,44 +30,44 @@ clusterGroup:
     - stackrox:
         operatorGroup: false
 
-    - istio-system:
-        operatorGroup: false
+    # - istio-system:
+    #     operatorGroup: false
 
     - rhacs-operator:
         operatorGroup: true
         annotations:
           openshift.io/display-name: Red Hat Advanced Cluster Security Operator
 
-    - openshift-operators-redhat:
-        operatorGroup: true
+    # - openshift-operators-redhat:
+    #     operatorGroup: true
 
-    - openshift-file-integrity:
-        annotations:
-          openshift.io/display-name: OpenShift File Integrity Operator
-        operatorGroup: true
-        targetNamespaces:
-            - openshift-file-integrity
+    # - openshift-file-integrity:
+    #     annotations:
+    #       openshift.io/display-name: OpenShift File Integrity Operator
+    #     operatorGroup: true
+    #     targetNamespaces:
+    #         - openshift-file-integrity
 
-    - openshift-distributed-tracing:
-        operatorGroup: true
+    # - openshift-distributed-tracing:
+    #     operatorGroup: true
 
-    - group-sync-operator:
-        operatorGroup: true
-        annotations:
-          openshift.io/display-name: "Group Sync Operator"
-          openshift.io/description: "Operator that synchronizes groups from external providers"
-        labels:
-          openshift.io/cluster-monitoring: "true"
-        targetNamespaces:
-          - group-sync-operator
+    # - group-sync-operator:
+    #     operatorGroup: true
+    #     annotations:
+    #       openshift.io/display-name: "Group Sync Operator"
+    #       openshift.io/description: "Operator that synchronizes groups from external providers"
+    #     labels:
+    #       openshift.io/cluster-monitoring: "true"
+    #     targetNamespaces:
+    #       - group-sync-operator
 
-    - costmanagement-metrics-operator:
-        operatorGroup: true
-        annotations:
-          openshift.io/description: Operator that provides cost management information to cloud.redhat.com
-          openshift.io/display-name: Red Hat Cost Management Operator
-        targetNamespaces:
-          - costmanagement-metrics-operator
+    # - costmanagement-metrics-operator:
+    #     operatorGroup: true
+    #     annotations:
+    #       openshift.io/description: Operator that provides cost management information to cloud.redhat.com
+    #       openshift.io/display-name: Red Hat Cost Management Operator
+    #     targetNamespaces:
+    #       - costmanagement-metrics-operator
 
     - cert-manager-operator:
         operatorGroup: true
@@ -78,19 +78,19 @@ clusterGroup:
         targetNamespaces:
           - cert-manager-operator
 
-    - openshift-compliance:
-        operatorGroup: true
-        annotations:
-          openshift.io/display-name: OpenShift Compliance Operator
-        targetNamespaces:
-          - openshift-compliance
+    # - openshift-compliance:
+    #     operatorGroup: true
+    #     annotations:
+    #       openshift.io/display-name: OpenShift Compliance Operator
+    #     targetNamespaces:
+    #       - openshift-compliance
 
-    - openshift-logging:
-        operatorGroup: true
-        labels:
-          openshift.io/cluster-monitoring: "true"
-        targetNamespaces:
-          - openshift-logging
+    # - openshift-logging:
+    #     operatorGroup: true
+    #     labels:
+    #       openshift.io/cluster-monitoring: "true"
+    #     targetNamespaces:
+    #       - openshift-logging
 
     - rhbk-keycloak:
         annotations:
