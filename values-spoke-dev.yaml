@@ -10,7 +10,7 @@ clusterGroup:
 
   namespaces:
     - hello-world
-    - external-secrets-operator
+    - ekho-external-secrets
     - postgresql
 
   subscriptions:

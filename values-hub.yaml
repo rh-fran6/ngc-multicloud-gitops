@@ -304,11 +304,11 @@ clusterGroup:
         # verbosity: "-v"
 
   managedClusterGroups:
-    exampleRegion:
-      name: rosa
+    ngc-rosa-clusters:
+      name: spoke-dev
       acmlabels:
-        - name: clusterGroup
-          value: rosa
+        - name: cluster
+          value: dev
       helmOverrides:
         - name: clusterGroup.isHubCluster
           value: false
