@@ -3,8 +3,8 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: akv-sp-read
-  annotations:
-    argocd.argoproj.io/sync-wave: "2"
+  # annotations:
+  #   argocd.argoproj.io/sync-wave: "2"
 type: Opaque
 data:
   ClientID: ZmZjOWM1MDgtNDgyZi00MjI2LWE1N2MtODA0MmM5ZWUwNzcxCg==  #service-principal-ID
@@ -16,8 +16,8 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: akv-sp-push
-  annotations:
-    argocd.argoproj.io/sync-wave: "2"
+  # annotations:
+  #   argocd.argoproj.io/sync-wave: "2"
 type: Opaque
 data:
   ClientID: MDRkN2NiMDItODE4Ny00YzI3LWFjMmUtMTE3ZGEzMmIzNjg3Cg==  #service-principal-ID
