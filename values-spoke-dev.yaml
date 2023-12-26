@@ -8,38 +8,38 @@ clusterGroup:
   name: rosa
   isHubCluster: false
 
-  # namespaces:
-  #   - hello-world
-  #   - ekho-external-secrets
-  #   - postgresql
+  namespaces:
+    - hello-world
+    - ekho-external-secrets
+    - postgresql
 
-  # subscriptions:
+  subscriptions:
 
-  # projects:
-  #   - eso
-  #   - hello-world
-  #   - postgresql
+  projects:
+    - eso
+    - hello-world
+    - postgresql
 
-  # applications:
+  applications:
     
-  #   ekho-external-secrets:
-  #     name: exho-external-secrets
-  #     namespace: ekho-external-secrets
-  #     project: hub
-  #     kustomize: true
-  #     path: charts/all/operators/ekho-external-secrets/overlays/default
+    ekho-external-secrets:
+      name: exho-external-secrets
+      namespace: ekho-external-secrets
+      project: eso
+      kustomize: true
+      path: charts/all/operators/ekho-external-secrets/overlays/default
 
-  #   hello-world:
-  #     name: hello-world
-  #     namespace: hello-world
-  #     project: hello-world
-  #     path: charts/all/hello-world
+    hello-world:
+      name: hello-world
+      namespace: hello-world
+      project: hello-world
+      path: charts/all/hello-world
 
-  #   postgresql:
-  #     name: postgresql
-  #     namespace: postgresql
-  #     project: postgresql
-  #     path: charts/all/apps/postgresql
+    postgresql:
+      name: postgresql
+      namespace: postgresql
+      project: postgresql
+      path: charts/all/apps/postgresql
       
 
   imperative:
