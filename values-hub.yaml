@@ -162,11 +162,11 @@ clusterGroup:
     #   namespace: openshift-file-integrity
     #   channel: release-0.1
 
-    group-sync-operator:
-      name: group-sync-operator
-      namespace: group-sync-operator
-      channel: alpha
-      source: community-operators
+    # group-sync-operator:
+    #   name: group-sync-operator
+    #   namespace: group-sync-operator
+    #   channel: alpha
+    #   source: community-operators
 
     # openshift-logging:
     #   name: cluster-logging
