@@ -9,11 +9,19 @@ clusterGroup:
   isHubCluster: false
 
   namespaces:
-    - hello-world
-    - ekho-external-secrets
-    - postgresql
+    - hello-world:
+        operatorGroup: false
+    - postgresql:
+        operatorGroup: false
+    - ekho-external-secrets:
+        operatorGroup: true
 
   subscriptions:
+    ekho-external-secrets:
+      name: external-secrets-operator
+      channel: stable
+      source: community-operators
+      sourceNamespace: openshift-marketplace
 
   projects:
     - eso
