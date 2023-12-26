@@ -16,8 +16,8 @@ clusterGroup:
     - hello-world:
         operatorGroup: false
 
-    - ekho-external-secrets:
-        operatorGroup: true
+    # - ekho-external-secrets:
+    #     operatorGroup: true
 
     - ansible-automation-platform:
         operatorGroup: true
@@ -33,10 +33,10 @@ clusterGroup:
     # - istio-system:
     #     operatorGroup: false
 
-    - rhacs-operator:
-        operatorGroup: true
-        annotations:
-          openshift.io/display-name: Red Hat Advanced Cluster Security Operator
+    # - rhacs-operator:
+    #     operatorGroup: true
+    #     annotations:
+    #       openshift.io/display-name: Red Hat Advanced Cluster Security Operator
 
     # - openshift-operators-redhat:
     #     operatorGroup: true
