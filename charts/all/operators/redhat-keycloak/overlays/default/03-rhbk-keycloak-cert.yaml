@@ -7,7 +7,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "2"
 spec:
   secretName: keycloak-cert-secret
-  isCA: false
+  # isCA: false
   usages:
     - server auth
     - client auth
