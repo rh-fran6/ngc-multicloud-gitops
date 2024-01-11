@@ -1,0 +1,52 @@
+apiVersion: cluster.open-cluster-management.io/v1
+kind: ManagedCluster
+metadata:
+  name: rosa-1
+  labels:
+    name: rosa-1
+    cloud: auto-detect
+    vendor: auto-detect
+    cluster.open-cluster-management.io/clusterset: default
+    cluster: rosa1
+    platform: rosa
+  annotations: {}
+spec:
+  hubAcceptsClient: true
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: auto-import-secret
+  namespace: rosa-1
+stringData:
+  autoImportRetry: "2"
+  token: sha256~LZ9EVpZIThWli6LIvbRbtpLwm_yBI3OQrSTAMb2AWXA
+  server: https://api.dd-rosa.ucua.p1.openshiftapps.com:6443
+type: Opaque
+---
+apiVersion: agent.open-cluster-management.io/v1
+kind: KlusterletAddonConfig
+metadata:
+  name: rosa-1
+  namespace: rosa-1
+spec:
+  clusterName: rosa-1
+  clusterNamespace: rosa-1
+  clusterLabels:
+    name: rosa-1
+    cloud: auto-detect
+    vendor: auto-detect
+    cluster.open-cluster-management.io/clusterset: default
+    cluster: rosa1
+    platform: rosa
+  applicationManager:
+    enabled: true
+    argocdCluster: false
+  policyController:
+    enabled: true
+  searchCollector:
+    enabled: true
+  certPolicyController:
+    enabled: true
+  iamPolicyController:
+    enabled: true

@@ -211,16 +211,23 @@ clusterGroup:
       path: charts/all/infra-tasks/autoscaler
 
     rhacs:
-      name: rhacs-server-side-config
+      name: rhacs
       namespace: rhacs-operator
       project: hub
-      path: charts/all/operators/rhacs/central
+      kustomize: true
+      path: charts/all/operators/openshift-plus
 
-    secured-cluster:
-      name: rhacs-secured-clusters
-      namespace: rhacs-operator
-      project: hub
-      path: charts/all/operators/rhacs/secured
+    # rhacs:
+    #   name: rhacs-server-side-config
+    #   namespace: rhacs-operator
+    #   project: hub
+    #   path: charts/all/operators/rhacs/central
+
+    # secured-cluster:
+    #   name: rhacs-secured-clusters
+    #   namespace: rhacs-operator
+    #   project: hub
+    #   path: charts/all/operators/rhacs/secured
 
     rhbk-keycloak:
       name: rhbk-keycloak
