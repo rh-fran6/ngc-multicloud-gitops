@@ -214,7 +214,7 @@ clusterGroup:
       name: rhacs
       namespace: rhacs-operator
       project: hub
-      kustomize: true
+      # kustomize: true
       path: charts/all/operators/openshift-plus
 
     # rhacs:
