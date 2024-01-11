@@ -18,4 +18,4 @@ spec:
   - policy-acs-operator-central
   - policy-acs-sync-resources
   - policy-advanced-managed-cluster-status
-  - policy-ocm-observability
+#   - policy-ocm-observability
