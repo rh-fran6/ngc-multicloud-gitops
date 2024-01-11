@@ -93,12 +93,15 @@ spec:
           objectDefinition:
             apiVersion: v1
             data:
-              admission-control-cert.pem: '{{hub fromSecret "policies" "admission-control-tls"
-                "admission-control-cert.pem" hub}}'
-              admission-control-key.pem: '{{hub fromSecret "policies" "admission-control-tls"
-                "admission-control-key.pem" hub}}'
-              ca.pem: '{{hub fromSecret "policies" "admission-control-tls" "ca.pem"
-                hub}}'
+            #   admission-control-cert.pem: '{{hub fromSecret "policies" "admission-control-tls"
+            #     "admission-control-cert.pem" hub}}'
+            #   admission-control-key.pem: '{{hub fromSecret "policies" "admission-control-tls"
+            #     "admission-control-key.pem" hub}}'
+            #   ca.pem: '{{hub fromSecret "policies" "admission-control-tls" "ca.pem"
+            #     hub}}'
+                admission-control-cert.pem: '{{ `{{hub fromSecret "stackrox" "admission-control-tls" "admission-control-cert.pem" hub}}` }}'
+                admission-control-key.pem: '{{ `{{hub fromSecret "stackrox" "admission-control-tls" "admission-control-key.pem" hub}}` }}'
+                ca.pem: '{{ `{{hub fromSecret "stackrox" "admission-control-tls" "ca.pem" hub}}` }}'
             kind: Secret
             metadata:
               name: admission-control-tls
