@@ -1,0 +1,155 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  annotations:
+    policy.open-cluster-management.io/categories: SI System and Information Integrity
+    policy.open-cluster-management.io/controls: SI-5 Security Alerts Advisories and
+      Directives
+    policy.open-cluster-management.io/standards: NIST SP 800-53
+  labels:
+    open-cluster-management.io/policy-set: openshift-plus
+  name: policy-acs-sync-resources
+  namespace: policies
+spec:
+  dependencies:
+  - apiVersion: policy.open-cluster-management.io/v1
+    compliance: Compliant
+    kind: Policy
+    name: policy-acs-central-ca-bundle
+    namespace: policies
+  disabled: false
+  policy-templates:
+  - objectDefinition:
+      apiVersion: policy.open-cluster-management.io/v1
+      kind: ConfigurationPolicy
+      metadata:
+        name: policy-acs-sync-resources
+      spec:
+        object-templates:
+        - complianceType: musthave
+          objectDefinition:
+            apiVersion: platform.stackrox.io/v1alpha1
+            kind: SecuredCluster
+            metadata:
+              name: stackrox-secured-cluster-services
+              namespace: stackrox
+            spec:
+              admissionControl:
+                listenOnCreates: false
+                listenOnEvents: true
+                listenOnUpdates: false
+              auditLogs:
+                collection: Auto
+              centralEndpoint: |
+                {{ fromSecret "stackrox" "sensor-tls" "acs-host" | base64dec }}
+              clusterName: |
+                {{ fromSecret "open-cluster-management-agent" "hub-kubeconfig-secret" "cluster-name" | base64dec }}
+              perNode:
+                collector:
+                  collection: EBPF
+                  imageFlavor: Regular
+                taintToleration: TolerateTaints
+              scanner:
+                scannerComponent: Disabled
+        remediationAction: enforce
+        severity: medium
+  - objectDefinition:
+      apiVersion: policy.open-cluster-management.io/v1
+      kind: ConfigurationPolicy
+      metadata:
+        name: policy-acs-sync-resources2
+      spec:
+        object-templates:
+        - complianceType: musthave
+          objectDefinition:
+            apiVersion: v1
+            data:
+              admission-control-cert.pem: '{{ fromSecret "stackrox" "admission-control-tls"
+                "admission-control-cert.pem" }}'
+              admission-control-key.pem: '{{ fromSecret "stackrox" "admission-control-tls"
+                "admission-control-key.pem" }}'
+              ca.pem: '{{ fromSecret "stackrox" "admission-control-tls" "ca.pem" }}'
+            kind: Secret
+            metadata:
+              labels:
+                certificate_key_name: admission-control-cert.pem
+              name: admission-control-tls
+              namespace: policies
+            type: Opaque
+        remediationAction: enforce
+        severity: medium
+  - objectDefinition:
+      apiVersion: policy.open-cluster-management.io/v1
+      kind: ConfigurationPolicy
+      metadata:
+        name: policy-acs-sync-resources3
+      spec:
+        object-templates:
+        - complianceType: musthave
+          objectDefinition:
+            apiVersion: v1
+            data:
+              ca.pem: '{{ fromSecret "stackrox" "collector-tls" "ca.pem" }}'
+              collector-cert.pem: '{{ fromSecret "stackrox" "collector-tls" "collector-cert.pem"
+                }}'
+              collector-key.pem: '{{ fromSecret "stackrox" "collector-tls" "collector-key.pem"
+                }}'
+            kind: Secret
+            metadata:
+              labels:
+                certificate_key_name: collector-cert.pem
+              name: collector-tls
+              namespace: policies
+            type: Opaque
+        remediationAction: enforce
+        severity: medium
+  - objectDefinition:
+      apiVersion: policy.open-cluster-management.io/v1
+      kind: ConfigurationPolicy
+      metadata:
+        name: policy-acs-sync-resources4
+      spec:
+        object-templates:
+        - complianceType: musthave
+          objectDefinition:
+            apiVersion: v1
+            data:
+              acs-host: '{{ fromSecret "stackrox" "sensor-tls" "acs-host" }}'
+              ca.pem: '{{ fromSecret "stackrox" "sensor-tls" "ca.pem" }}'
+              sensor-cert.pem: '{{ fromSecret "stackrox" "sensor-tls" "sensor-cert.pem"
+                }}'
+              sensor-key.pem: '{{ fromSecret "stackrox" "sensor-tls" "sensor-key.pem"
+                }}'
+            kind: Secret
+            metadata:
+              labels:
+                certificate_key_name: sensor-cert.pem
+              name: sensor-tls
+              namespace: policies
+            type: Opaque
+        remediationAction: enforce
+        severity: medium
+  - objectDefinition:
+      apiVersion: policy.open-cluster-management.io/v1
+      kind: ConfigurationPolicy
+      metadata:
+        name: policy-acs-sync-resources5
+      spec:
+        object-templates:
+        - complianceType: musthave
+          objectDefinition:
+            apiVersion: console.openshift.io/v1
+            kind: ConsoleLink
+            metadata:
+              name: acs
+            spec:
+              applicationMenu:
+                imageURL: https://upload.wikimedia.org/wikipedia/commons/3/3a/OpenShift-LogoType.svg
+                section: Red Hat applications
+              href: https://{{ (lookup "route.openshift.io/v1" "Route" "stackrox"
+                "central").spec.host }}
+              location: ApplicationMenu
+              text: Red Hat Advanced Cluster Security for Kubernetes
+        remediationAction: enforce
+        severity: medium
+  remediationAction: enforce
