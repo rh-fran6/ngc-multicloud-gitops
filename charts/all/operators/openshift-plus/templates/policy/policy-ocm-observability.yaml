@@ -74,11 +74,7 @@ spec:
           objectDefinition:
             apiVersion: v1
             data:
-              .dockerconfigjson: '{{- if eq (lookup "v1" "Secret" "open-cluster-management"
-                "multiclusterhub-operator-pull-secret").kind "Secret" -}} {{- fromSecret
-                "open-cluster-management" "multiclusterhub-operator-pull-secret" ".dockerconfigjson"
-                -}} {{- else -}} {{- fromSecret "openshift-config" "pull-secret" ".dockerconfigjson"
-                -}} {{- end -}}'
+              .dockerconfigjson: '{{- if eq (lookup "v1" "Secret" "open-cluster-management" "multiclusterhub-operator-pull-secret").kind "Secret" -}} {{- fromSecret "open-cluster-management" "multiclusterhub-operator-pull-secret" ".dockerconfigjson" -}} {{- else -}} {{- fromSecret "openshift-config" "pull-secret" ".dockerconfigjson" -}} {{- end -}}'
             kind: Secret
             metadata:
               name: multiclusterhub-operator-pull-secret
