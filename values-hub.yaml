@@ -306,10 +306,10 @@ clusterGroup:
 
   managedClusterGroups:
     ngc-rosa-clusters:
-      name: spoke-dev
+      name: rosa-demo
       acmlabels:
         - name: cluster
-          value: dev
+          value: rosa
       helmOverrides:
         - name: clusterGroup.isHubCluster
           value: false
