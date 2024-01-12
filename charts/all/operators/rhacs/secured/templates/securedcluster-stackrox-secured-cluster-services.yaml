@@ -11,23 +11,14 @@ spec:
   auditLogs:
     collection: Auto
   admissionControl:
-    listenOnUpdates: true
-    bypass: BreakGlassAnnotation
-    contactImageScanners: DoNotScanInline
-    listenOnCreates: true
-    timeoutSeconds: 3
+    listenOnUpdates: false
+    listenOnCreates: false
     listenOnEvents: true
   scanner:
-    analyzer:
-      scaling:
-        autoScaling: Enabled
-        maxReplicas: 5
-        minReplicas: 2
-        replicas: 3
-    scannerComponent: AutoSense
+    scannerComponent: Disabled
   perNode:
     collector:
-      collection: KernelModule
+      collection: EBPF
       imageFlavor: Regular
     taintToleration: TolerateTaints
   clusterName: {{ (split "." .Values.global.localClusterDomain)._1 }}
