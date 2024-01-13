@@ -29,7 +29,7 @@ cat <<EOF | oc apply -f -
     sourceNamespace: openshift-marketplace
 EOF
 
-# sleep 120
+sleep 120
 
 fi
 
