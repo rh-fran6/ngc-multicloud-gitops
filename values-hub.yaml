@@ -38,6 +38,9 @@ clusterGroup:
         annotations:
           openshift.io/display-name: Red Hat Advanced Cluster Security Operator
 
+    - policies:
+        operatorGroup: false
+
     - openshift-operators-redhat:
         operatorGroup: true
 
