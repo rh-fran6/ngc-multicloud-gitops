@@ -27,16 +27,16 @@ clusterGroup:
     - postgresql:
         operatorGroup: false
 
-    # - stackrox:
-    #     operatorGroup: false
+    - stackrox:
+        operatorGroup: false
 
     - istio-system:
         operatorGroup: false
 
-    # - rhacs-operator:
-    #     operatorGroup: true
-    #     annotations:
-    #       openshift.io/display-name: Red Hat Advanced Cluster Security Operator
+    - rhacs-operator:
+        operatorGroup: true
+        annotations:
+          openshift.io/display-name: Red Hat Advanced Cluster Security Operator
 
     - policies:
         operatorGroup: false
@@ -212,6 +212,12 @@ clusterGroup:
       namespace: openshift-machine-api
       project: hub
       path: charts/all/infra-tasks/autoscaler
+
+    openshift-plus:
+      name: openshift-plus
+      namespace: rhacs-operator
+      project: hub
+      path: charts/all/operators/openshift-plus
 
 
     # rhacs:
