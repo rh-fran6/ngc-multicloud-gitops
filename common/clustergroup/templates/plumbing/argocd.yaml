@@ -97,6 +97,8 @@ spec:
   initialSSHKnownHosts: {}
   rbac:
     defaultPolicy: role:admin
+  ## New Add 
+  kustomizeBuildOptions: --enable-alpha-plugins
   repo:
     resources:
       limits:
@@ -105,6 +107,29 @@ spec:
       requests:
         cpu: 250m
         memory: 256Mi
+    ## New Add
+    env:
+    - name: KUSTOMIZE_PLUGIN_HOME
+      value: /etc/kustomize/plugin
+    initContainers:
+    - args:
+      - -c
+      - cp /etc/kustomize/plugin/policy.open-cluster-management.io/v1/policygenerator/PolicyGenerator
+        /policy-generator/PolicyGenerator
+      command:
+      - /bin/bash
+      image: registry.redhat.io/rhacm2/multicluster-operators-subscription-rhel8:v<version>
+      name: policy-generator-install
+      volumeMounts:
+      - mountPath: /policy-generator
+        name: policy-generator
+    volumeMounts:
+    - mountPath: /etc/kustomize/plugin/policy.open-cluster-management.io/v1/policygenerator
+      name: policy-generator
+    volumes:
+    - emptyDir: {}
+      name: policy-generator
+    ## New Add Ends
   resourceExclusions: |
     - apiGroups:
       - tekton.dev
