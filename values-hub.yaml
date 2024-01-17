@@ -27,16 +27,16 @@ clusterGroup:
     - postgresql:
         operatorGroup: false
 
-    - stackrox:
-        operatorGroup: false
+    # - stackrox:
+    #     operatorGroup: false
 
     - istio-system:
         operatorGroup: false
 
-    - rhacs-operator:
-        operatorGroup: true
-        annotations:
-          openshift.io/display-name: Red Hat Advanced Cluster Security Operator
+    # - rhacs-operator:
+    #     operatorGroup: true
+    #     annotations:
+    #       openshift.io/display-name: Red Hat Advanced Cluster Security Operator
 
     - policies:
         operatorGroup: false
@@ -114,9 +114,9 @@ clusterGroup:
       namespace: ansible-automation-platform
       channel: stable-2.4-cluster-scoped
 
-    rhacs-operator:
-      name: rhacs-operator
-      channel: stable
+    # rhacs-operator:
+    #   name: rhacs-operator
+    #   channel: stable
 
     ekho-external-secrets:
       name: external-secrets-operator
@@ -214,17 +214,17 @@ clusterGroup:
       path: charts/all/infra-tasks/autoscaler
 
 
-    rhacs:
-      name: rhacs-server-side-config
-      namespace: rhacs-operator
-      project: hub
-      path: charts/all/operators/rhacs/central
+    # rhacs:
+    #   name: rhacs-server-side-config
+    #   namespace: rhacs-operator
+    #   project: hub
+    #   path: charts/all/operators/rhacs/central
 
-    secured-cluster:
-      name: rhacs-secured-clusters
-      namespace: rhacs-operator
-      project: hub
-      path: charts/all/operators/rhacs/secured
+    # secured-cluster:
+    #   name: rhacs-secured-clusters
+    #   namespace: rhacs-operator
+    #   project: hub
+    #   path: charts/all/operators/rhacs/secured
 
     rhbk-keycloak:
       name: rhbk-keycloak
