@@ -18,8 +18,10 @@ rules:
       - update
   - apiGroups:
       - platform.stackrox.io
+      - route.openshift.io ## Added
     resources:
       - securedclusters
+      - routes # Added
     verbs:
       - get
       - list
