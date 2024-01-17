@@ -1,5 +1,5 @@
-﻿# {{ if .Values.acs_enabled }}
-{{ if .Values.clusterGroup.isHubCluster }}
+﻿{{ if .Values.acs_enabled }}
+# {{ if .Values.clusterGroup.isHubCluster }}
 apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
 metadata:
