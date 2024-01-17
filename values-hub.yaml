@@ -1,6 +1,7 @@
 clusterGroup:
   name: hub
   isHubCluster: true
+  acs_enabled: true
 
   ## Create Namespaces & Operator Group
   namespaces:
