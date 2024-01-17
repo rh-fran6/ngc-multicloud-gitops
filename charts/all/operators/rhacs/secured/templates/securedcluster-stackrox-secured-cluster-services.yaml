@@ -1,4 +1,4 @@
-﻿{{ if .Values.acs.enabled }}
+﻿{{ if .Values.acs_enabled }}
 apiVersion: platform.stackrox.io/v1alpha1
 kind: SecuredCluster
 metadata:
@@ -11,14 +11,23 @@ spec:
   auditLogs:
     collection: Auto
   admissionControl:
-    listenOnUpdates: false
-    listenOnCreates: false
+    listenOnUpdates: true
+    bypass: BreakGlassAnnotation
+    contactImageScanners: DoNotScanInline
+    listenOnCreates: true
+    timeoutSeconds: 3
     listenOnEvents: true
   scanner:
-    scannerComponent: Disabled
+    analyzer:
+      scaling:
+        autoScaling: Enabled
+        maxReplicas: 5
+        minReplicas: 2
+        replicas: 3
+    scannerComponent: AutoSense
   perNode:
     collector:
-      collection: EBPF
+      collection: KernelModule
       imageFlavor: Regular
     taintToleration: TolerateTaints
   clusterName: {{ (split "." .Values.global.localClusterDomain)._1 }}

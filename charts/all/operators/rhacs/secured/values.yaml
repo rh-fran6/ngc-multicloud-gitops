@@ -1,8 +1,2 @@
 global:
-  localClusterDomain: local-cluster
-  hubClusterDomain: apps.dd-aro.eastus.aroapp.io
-
-acs:
-  enabled: true
-
-
+  localClusterDomain: AUTOMATIC

@@ -1,3 +1,0 @@
-global:
-  localClusterDomain: apps.dd-aro.eastus.aroapp.io
-  acs_enabled: true

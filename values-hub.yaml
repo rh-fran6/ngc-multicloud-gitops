@@ -215,13 +215,13 @@ clusterGroup:
       name: rhacs-server-side-config
       namespace: rhacs-operator
       project: hub
-      path: charts/all/operators/rhacs_bkp/central
+      path: charts/all/operators/rhacs/central
 
     secured-cluster:
       name: rhacs-secured-clusters
       namespace: rhacs-operator
       project: hub
-      path: charts/all/operators/rhacs_bkp/secured
+      path: charts/all/operators/rhacs/secured
 
     rhbk-keycloak:
       name: rhbk-keycloak
