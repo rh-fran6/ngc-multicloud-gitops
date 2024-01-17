@@ -7,7 +7,6 @@ global:
 clusterGroup:
   name: rosa
   isHubCluster: false
-  acs_enabled: true
 
   namespaces:
     - hello-world:

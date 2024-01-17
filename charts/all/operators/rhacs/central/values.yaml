@@ -7,6 +7,12 @@ job:
 
 managedclusters: managed
 
+hub_cluster:
+  acs_enabled: true
+  
+managed_clusters:
+  acs_enabled: true
+
 # global:
 #   hubClusterDomain: AUTOMATIC
 

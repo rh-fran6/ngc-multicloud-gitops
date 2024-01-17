@@ -1,4 +1,4 @@
-﻿{{ if .Values.clusterGroup.acs_enabled }}
+﻿{{ if .Values.clusterGroup.isHubCluster }}
 apiVersion: platform.stackrox.io/v1alpha1
 kind: SecuredCluster
 metadata:
