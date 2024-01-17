@@ -27,7 +27,7 @@ spec:
     scannerComponent: AutoSense
   perNode:
     collector:
-      collection: KernelModule
+      collection: EBPF
       imageFlavor: Regular
     taintToleration: TolerateTaints
   clusterName: {{ (split "." .Values.global.localClusterDomain)._1 }}
