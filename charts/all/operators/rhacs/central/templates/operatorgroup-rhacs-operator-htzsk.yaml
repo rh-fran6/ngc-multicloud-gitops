@@ -1,4 +1,4 @@
-﻿{{ if .Values.acs_enabled }}
+﻿{{ if .Values.acs_enabled123 }}
 # {{ if .Values.clusterGroup.acs_enabled }}
 apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
