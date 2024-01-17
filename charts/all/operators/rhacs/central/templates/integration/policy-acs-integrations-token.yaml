@@ -61,7 +61,7 @@ spec:
   clusterSelector:
     # Using matchLabels because I need it in only one clusterGroup
     matchLabels:
-      clusterGroup: devel
+      clusterGroup: {{ .Values.managedclusters }}
   clusterConditions:
     - status: 'True'
       type: ManagedClusterConditionAvailable

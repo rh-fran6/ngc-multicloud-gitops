@@ -308,11 +308,11 @@ clusterGroup:
         # verbosity: "-v"
 
   managedClusterGroups:
-    ngc-rosa-clusters:
+    managed-cluster-group-1:
       name: rosa-demo
       acmlabels:
-        - name: cluster
-          value: rosa
+        - name: clustergroup
+          value: managed
       helmOverrides:
         - name: clusterGroup.isHubCluster
           value: false

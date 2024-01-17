@@ -1,4 +1,4 @@
-﻿{{ if .Values.acs_central_cluster }}
+﻿{{ if .Values.clusterGroup.isHubCluster }}
 apiVersion: platform.stackrox.io/v1alpha1
 kind: Central
 metadata:

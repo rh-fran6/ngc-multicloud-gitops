@@ -5,8 +5,10 @@ acs:
 job:
   image: image-registry.openshift-image-registry.svc:5000/openshift/cli-tools:latest
 
-global:
-  hubClusterDomain: AUTOMATIC
+managedclusters: managed
 
-clusterGroup:
-  name: AUTOMATIC
+# global:
+#   hubClusterDomain: AUTOMATIC
+
+# clusterGroup:
+#   name: AUTOMATIC
