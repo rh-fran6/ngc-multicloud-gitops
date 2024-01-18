@@ -108,27 +108,27 @@ spec:
         cpu: 250m
         memory: 256Mi
     ## New Add
-    # env:
-    # - name: KUSTOMIZE_PLUGIN_HOME
-    #   value: /etc/kustomize/plugin
-    # initContainers:
-    # - args:
-    #   - -c
-    #   - cp /etc/kustomize/plugin/policy.open-cluster-management.io/v1/policygenerator/PolicyGenerator /policy-generator/PolicyGenerator
-    #   command:
-    #   - /bin/bash
-    #   image: registry.redhat.io/rhacm2/multicluster-operators-channel-rhel8@sha256:c9dfb9fa740e9ff73238635ee5011c7f2cf1364003effed788534eea961d09e8
-    #   name: policy-generator-install
-    #   volumeMounts:
-    #   - mountPath: /policy-generator
-    #     name: policy-generator
-    # volumeMounts:
-    # - mountPath: /etc/kustomize/plugin/policy.open-cluster-management.io/v1/policygenerator
-    #   name: policy-generator
-    # volumes:
-    # - emptyDir: {}
-    #   name: policy-generator
-    ## New Add Ends
+    env:
+    - name: KUSTOMIZE_PLUGIN_HOME                                                
+      value: /etc/kustomize/plugin                                                            
+    initContainers:                                                             
+    - args:
+      - -c
+      - cp /etc/kustomize/plugin/my-plugin /kustomize-plugin
+      command:
+      - /bin/bash
+      image: registry.example.com/kustomize/kustomize-plugin:latest
+      name: kustomize-plugin-install
+      volumeMounts:
+      - mountPath: /kustomize-plugin
+        name: kustomize-plugin-dir
+    volumeMounts:
+    - mountPath: /etc/kustomize/plugin
+      name: kustomize-plugin-dir
+    volumes:                                                                     
+    - emptyDir: {}
+      name: kustomize-plugin-dir
+    # New Add Ends
   resourceExclusions: |
     - apiGroups:
       - tekton.dev
