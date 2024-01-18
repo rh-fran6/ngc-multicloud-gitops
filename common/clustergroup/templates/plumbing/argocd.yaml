@@ -119,6 +119,7 @@ spec:
       command:
       - /bin/bash
       image: registry.redhat.io/rhacm2/multicluster-operators-channel-rhel8@sha256:c9dfb9fa740e9ff73238635ee5011c7f2cf1364003effed788534eea961d09e8
+      name: policy-generator-install
       volumeMounts:
       - mountPath: /policy-generator
         name: policy-generator
