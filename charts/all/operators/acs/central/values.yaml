@@ -3,7 +3,7 @@ acs:
   integrations: true
 
 job:
-  image: image-registry.openshift-image-registry.svc:5000/openshift/cli-tools:latest
+  image: image-registry.openshift-image-registry.svc:5000/openshift/cli:latest
 
 global:
   hubClusterDomain: AUTOMATIC

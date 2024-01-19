@@ -214,7 +214,7 @@ clusterGroup:
       project: hub
       path: charts/all/infra-tasks/autoscaler
 
-    rhacs:
+    acs-central:
       name: acs-central
       namespace: stackrox
       project: hub
