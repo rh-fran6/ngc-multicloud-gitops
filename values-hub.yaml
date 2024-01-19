@@ -214,17 +214,17 @@ clusterGroup:
       project: hub
       path: charts/all/infra-tasks/autoscaler
 
-    acs-central:
-      name: acs-central
-      namespace: stackrox
-      project: hub
-      path: charts/all/operators/acs/central
+    # acs-central:
+    #   name: acs-central
+    #   namespace: stackrox
+    #   project: hub
+    #   path: charts/all/operators/acs/central
 
-    secured-cluster:
-      name: acs-secured
-      namespace: stackrox
-      project: hub
-      path: charts/all/operators/acs/secured
+    # secured-cluster:
+    #   name: acs-secured
+    #   namespace: stackrox
+    #   project: hub
+    #   path: charts/all/operators/acs/secured
 
     rhbk-keycloak:
       name: rhbk-keycloak
