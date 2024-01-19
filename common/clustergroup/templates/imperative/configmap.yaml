@@ -10,4 +10,3 @@ data:
   values.yaml: |
 {{ tpl $valuesyaml . | indent 4 }}
 {{- end }}
----

@@ -1,0 +1,218 @@
+global:
+  options:
+    useCSV: False
+    syncPolicy: Automatic
+    installPlanApproval: Automatic
+
+clusterGroup:
+  name: production
+  isHubCluster: false
+
+  namespaces:
+    - rhacs-operator:
+        operatorGroup: true
+        annotations:
+          openshift.io/display-name: Red Hat Advanced Cluster Security Operator
+    
+    - stackrox:
+        operatorGroup: false
+
+    - policies:
+        operatorGroup: false
+
+    - hello-world:
+        operatorGroup: false
+
+    - ekho-external-secrets:
+        operatorGroup: true
+
+    - istio-system:
+        operatorGroup: false
+
+    - openshift-operators-redhat:
+        operatorGroup: true
+
+    - openshift-file-integrity:
+        annotations:
+          openshift.io/display-name: OpenShift File Integrity Operator
+        operatorGroup: true
+        targetNamespaces:
+            - openshift-file-integrity
+
+    - openshift-distributed-tracing:
+        operatorGroup: true
+
+    - group-sync-operator:
+        operatorGroup: true
+        annotations:
+          openshift.io/display-name: "Group Sync Operator"
+          openshift.io/description: "Operator that synchronizes groups from external providers"
+        labels:
+          openshift.io/cluster-monitoring: "true"
+        targetNamespaces:
+          - group-sync-operator
+
+    - costmanagement-metrics-operator:
+        operatorGroup: true
+        annotations:
+          openshift.io/description: Operator that provides cost management information to cloud.redhat.com
+          openshift.io/display-name: Red Hat Cost Management Operator
+        targetNamespaces:
+          - costmanagement-metrics-operator
+
+    - cert-manager-operator:
+        operatorGroup: true
+        annotations:
+          openshift.io/display-name: Red Hat Certificate Manager Operator
+        labels:
+          openshift.io/cluster-monitoring: "true"
+        targetNamespaces:
+          - cert-manager-operator
+
+    - openshift-compliance:
+        operatorGroup: true
+        annotations:
+          openshift.io/display-name: OpenShift Compliance Operator
+        targetNamespaces:
+          - openshift-compliance
+
+    - openshift-logging:
+        operatorGroup: true
+        labels:
+          openshift.io/cluster-monitoring: "true"
+        targetNamespaces:
+          - openshift-logging
+
+  subscriptions:
+    rhacs-operator:
+      name: rhacs-operator
+      channel: stable
+
+    ekho-external-secrets:
+      name: external-secrets-operator
+      channel: stable
+      source: community-operators
+      sourceNamespace: openshift-marketplace
+
+    elasticsearch:
+      name: elasticsearch-operator
+      channel: stable
+
+    jaeger:
+      name: jaeger-product
+      channel: stable
+
+    kiali:
+      name: kiali-ossm
+      channel: stable
+
+    ossm:
+      name: servicemeshoperator
+      channel: stable
+
+    cost:
+      name: costmanagement-metrics-operator
+      namespace: costmanagement-metrics-operator
+      channel: stable
+
+    certmanager:
+      name: openshift-cert-manager-operator
+      namespace: cert-manager-operator
+      channel: stable-v1
+
+    compliance-operator:
+      name: compliance-operator
+      namespace: openshift-compliance
+      channel: stable
+
+    openshift-file-integrity:
+      name: file-integrity-operator
+      namespace: openshift-file-integrity
+      channel: release-0.1
+
+    group-sync-operator:
+      name: group-sync-operator
+      namespace: group-sync-operator
+      channel: alpha
+      source: community-operators
+
+    openshift-logging:
+      name: cluster-logging
+      namespace: openshift-logging
+      channel: stable
+
+    openshift-pipelines-operator:
+      name: openshift-pipelines-operator-rh
+      channel: pipelines-1.9
+
+  projects:
+    - app
+    - secured
+    - infra
+    - hello-world
+
+  sharedValueFiles:
+    - '/overrides/values-{{ $.Values.global.clusterPlatform }}.yaml'
+    - '/overrides/values-{{ $.Values.global.clusterPlatform }}-{{ $.Values.global.clusterVersion }}.yaml' #   E:
+
+  applications:
+    acs-secured:
+      name: acs-secured
+      namespace: stackrox
+      project: secured
+      path: charts/hub/acs/secured
+
+    ekho-external-secrets:
+      name: exho-external-secrets
+      namespace: ekho-external-secrets
+      project: infra
+      kustomize: true
+      path: charts/all/operators/ekho-external-secrets/overlays/default
+
+    hello-world:
+      name: hello-world
+      namespace: hello-world
+      project: hello-world
+      path: charts/all/apps/hello-world
+    
+    openshift-logging:
+      name: openshift-logging
+      namespace: openshift-logging
+      project: hub
+      kustomize: true
+      path: charts/all/operators/openshift-logging/instance/overlays/default
+
+    openshift-compliance:
+      name: openshift-compliance
+      namespace: openshift-compliance
+      project: hub
+      kustomize: true
+      path: charts/all/operators/compliance-operator/overlays/default
+
+    openshift-file-integrity:
+      name: openshift-file-integrity
+      namespace: openshift-file-integrity
+      project: hub
+      kustomize: true
+      path: charts/all/operators/file-integrity-operator/instance/overlays/default
+
+    cost-management-operator:
+      name: costmanagement-metrics-operator
+      namespace: costmanagement-metrics-operator
+      project: hub
+      kustomize: true
+      path: charts/all/operators/cost-management-operator/overlays/default
+
+    ossm:
+      name: servicemeshoperator
+      namespace: openshift-operators
+      project: hub
+      kustomize: true
+      path: charts/all/operators/openshift-servicemesh/instance/overlays/default
+
+    cert-manager:
+      name: cert-manager
+      namespace: cert-maanger
+      project: hub
+      kustomize: true
+      path: charts/all/operators/cert-manager/overlays/default

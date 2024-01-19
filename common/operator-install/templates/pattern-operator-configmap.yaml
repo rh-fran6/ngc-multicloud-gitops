@@ -11,4 +11,3 @@ data:
   # gitops.installApprovalPlan: GitOpsDefaultApprovalPlan
   # gitops.ManualSync: GitOpsDefaultManualSync
   # gitops.name: GitOpsDefaultPackageName
-

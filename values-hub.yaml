@@ -114,9 +114,9 @@ clusterGroup:
       namespace: ansible-automation-platform
       channel: stable-2.4-cluster-scoped
 
-    # rhacs-operator:
-    #   name: rhacs-operator
-    #   channel: stable
+    rhacs-operator:
+      name: rhacs-operator
+      channel: stable
 
     ekho-external-secrets:
       name: external-secrets-operator
@@ -186,7 +186,8 @@ clusterGroup:
     - postgresql
 
   sharedValueFiles:
-    - "/overrides/values-{{ $.Values.global.clusterPlatform }}.yaml"
+    - '/overrides/values-{{ $.Values.global.clusterPlatform }}.yaml'
+    - '/overrides/values-{{ $.Values.global.clusterPlatform }}-{{ $.Values.global.clusterVersion }}.yaml' #   E: line too long (115 > 80 characters)
 
   applications:
     acm:
@@ -213,25 +214,17 @@ clusterGroup:
       project: hub
       path: charts/all/infra-tasks/autoscaler
 
-    openshift-plus:
-      name: openshift-plus
-      namespace: rhacs-operator
+    rhacs:
+      name: acs-central
+      namespace: stackrox
       project: hub
-      kustomize: true
-      path: charts/all/operators/openshift-plus
+      path: charts/all/operators/acs/central
 
-
-    # rhacs:
-    #   name: rhacs-server-side-config
-    #   namespace: rhacs-operator
-    #   project: hub
-    #   path: charts/all/operators/rhacs/central
-
-    # secured-cluster:
-    #   name: rhacs-secured-clusters
-    #   namespace: rhacs-operator
-    #   project: hub
-    #   path: charts/all/operators/rhacs/secured
+    secured-cluster:
+      name: acs-secured
+      namespace: stackrox
+      project: hub
+      path: charts/all/operators/acs/secured
 
     rhbk-keycloak:
       name: rhbk-keycloak
@@ -315,14 +308,18 @@ clusterGroup:
         # verbosity: "-v"
 
   managedClusterGroups:
-    managed-cluster-group-1:
-      name: rosa-demo
-      acmlabels:
-        - name: clustergroup
-          value: managed
+    - name: production
       helmOverrides:
-        - name: clusterGroup.isHubCluster
-          value: false
+          - name: clusterGroup.isHubCluster
+            value: "false"
+      clusterSelector:
+          matchLabels:
+             clusterGroup: prod
+          matchExpressions:
+             - key: vendor
+               operator: In
+               values:
+                  - OpenShift
 
       # Before enabling cluster provisioning, ensure AWS and/or Azure
       #   credentials and OCP pull secrets are defined in Vault.

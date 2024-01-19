@@ -1,6 +1,5 @@
 {{- if not (eq .Values.enabled "plumbing") }}
 {{- if $.Values.clusterGroup.isHubCluster }}
-{{- if $.Values.clusterGroup.imperative.unseal }}
 ---
 apiVersion: batch/v1
 kind: CronJob
@@ -55,6 +54,5 @@ spec:
             configMap:
               name: {{ $.Values.clusterGroup.imperative.valuesConfigMap }}-{{ $.Values.clusterGroup.name }}
           restartPolicy: Never
-{{- end }}
 {{- end }}
 {{- end }}
