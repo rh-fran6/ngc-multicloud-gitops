@@ -121,7 +121,7 @@ metadata:
 spec:
   clusterGroupName: hub
   gitSpec:
-    targetRepo: https://github.com/rh-fran6/ngc-multicloud-gitops.git
+    targetRepo: https://github.com/anyaegbufrancis/ngc-milticloud-gitops.git
     targetRevision: main
   multiSourceConfig:
     enabled: false
